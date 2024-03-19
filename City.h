@@ -10,23 +10,23 @@ class City {
 private:
     string name_;
     string code_;
+    string population_;
     unsigned int id_;
-    unsigned int population_;
     float demand_;
 
 public:
-    City(string& name, string& code, unsigned int id, unsigned int population, float demand);
+    City(string& name, string& code, unsigned int id, string population, float demand);
 
     string getName();
     string getCode();
+    string getPopulation();
     unsigned int getId();
-    int getPopulation();
     float getDemand();
 
     void setName(string& name);
     void setCode(string& code);
+    void setPopulation(string& population);
     void setId(unsigned int id);
-    void setPopulation(unsigned int population);
     void setDemand(float demand);
 };
 
