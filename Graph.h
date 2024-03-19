@@ -10,7 +10,9 @@
 #include <queue>
 #include <limits>
 #include <algorithm>
-#include "../data_structures/MutablePriorityQueue.h"
+#include <string>
+
+using namespace std;
 
 template <class T>
 class Edge;
@@ -44,7 +46,7 @@ public:
     bool removeEdge(T in);
     void removeOutgoingEdges();
 
-    friend class MutablePriorityQueue<Vertex>;
+    //friend class MutablePriorityQueue<Vertex>;
 protected:
     T info;                // info node
     std::vector<Edge<T> *> adj;  // outgoing edges
@@ -103,12 +105,12 @@ public:
     /*
     * Auxiliary function to find a vertex with a given the content.
     */
-    Vertex<T> *findVertex(const T &in) const;
+    Vertex<T> *findVertex(string code) const;
     /*
      *  Adds a vertex with a given content or info (in) to a graph (this).
      *  Returns true if successful, and false if a vertex with that content already exists.
      */
-    bool addVertex(const T &in);
+    bool addVertex(const T in);
     bool removeVertex(const T &in);
 
     /*
@@ -357,9 +359,9 @@ std::vector<Vertex<T> *> Graph<T>::getVertexSet() const {
  * Auxiliary function to find a vertex with a given content.
  */
 template <class T>
-Vertex<T> * Graph<T>::findVertex(const T &in) const {
+Vertex<T> * Graph<T>::findVertex(string code) const {
     for (auto v : vertexSet)
-        if (v->getInfo() == in)
+        if (v->getInfo()->getCode() == code)
             return v;
     return nullptr;
 }
@@ -379,9 +381,8 @@ int Graph<T>::findVertexIdx(const T &in) const {
  *  Returns true if successful, and false if a vertex with that content already exists.
  */
 template <class T>
-bool Graph<T>::addVertex(const T &in) {
-    if (findVertex(in) != nullptr)
-        return false;
+bool Graph<T>::addVertex(const T in) {
+    if (findVertex(in->getCode()) != nullptr){return false;}
     vertexSet.push_back(new Vertex<T>(in));
     return true;
 }
