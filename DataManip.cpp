@@ -106,7 +106,28 @@ void DataManip::readReservoirs() {
 
 
 void DataManip::readPipes() {
-    return;
+    ifstream in("../Project1DataSetSmall/Pipes_Madeira.csv");
+    string service_point_a, service_point_b, line;
+    unsigned int capacity, direction;
+
+    getline(in, line);
+
+    if(in.is_open()) {
+        while(getline(in, line)){
+            istringstream iss(line);
+
+            getline(iss, service_point_a, ',');
+            getline(iss, service_point_b, ',');
+            iss>>capacity;
+            iss.ignore();
+            iss>>direction;
+
+
+            graph_.addEdge(service_point_a, service_point_b, capacity);
+
+        }
+
+    } else cout << "Could not open the file\n";
 }
 
 unordered_map<string, City *> DataManip::getCities() {
@@ -119,4 +140,8 @@ unordered_map<string, Station *> DataManip::getStations() {
 
 unordered_map<string, Reservoir *> DataManip::getReservoirs() {
     return reservoirs_;
+}
+
+Graph DataManip::getGraph() {
+    return graph_;
 }

@@ -67,6 +67,11 @@ bool Graph::addEdge(const string &sourceCode, const string &destCode, unsigned i
     }
     v1->addEdge(v2,capacity);
 }
+
+unordered_map<string, Vertex *> Graph::getVertexSet() {
+    return vertexSet;
+}
+
 //Edge
 Edge::Edge(Vertex *d, unsigned int capacity) {
     this->dest= d;

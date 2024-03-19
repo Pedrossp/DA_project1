@@ -42,6 +42,7 @@ public:
     Vertex* findVertex(const string& code) const;
     bool addVertex(unsigned int id,string code);
     bool addEdge(const string &sourceCode,const string &destCode, unsigned int capacity);
+    unordered_map<string, Vertex*> getVertexSet();
 };
 
 class Edge{

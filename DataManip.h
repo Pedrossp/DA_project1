@@ -13,7 +13,6 @@ using namespace std;
 
 class DataManip {
 
-private:
     Graph graph_;
     unordered_map<string, City*> cities_;
     unordered_map<string, Station*> stations_;
@@ -29,6 +28,7 @@ public:
     unordered_map<string, City*> getCities();
     unordered_map<string, Station*> getStations();
     unordered_map<string, Reservoir*> getReservoirs();
+    Graph getGraph();
 };
 
 
