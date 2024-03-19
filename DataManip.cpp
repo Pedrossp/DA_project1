@@ -1,22 +1,20 @@
-//
-// Created by pedrosspedro on 18-03-2024.
-//
-
+#include <iostream>
 #include <fstream>
 #include "DataManip.h"
 #include <sstream>
 #include "Station.h"
 #include "Reservoir.h"
-template<class T>
-DataManip<T>::DataManip() {}
 
-template<class T>
-void DataManip<T>::readCities() {
+using namespace std;
+DataManip::DataManip() {}
+
+
+void DataManip::readCities() {
 return;
 }
 
-template<class T>
-void DataManip<T>::readStations() {
+
+void DataManip::readStations() {
     ifstream in("../Project1DataSetSmall/Stations_Madeira.csv");
     unsigned int id;
     string code,line;
@@ -27,19 +25,27 @@ void DataManip<T>::readStations() {
 
         while(getline(in, line)){
 
+            if (line.front() == ',')
+                continue;
+
             istringstream iss(line);
             iss>>id;
             iss.ignore();
             getline(iss, code, ',');
 
-           //graph_.addVertex(Station(id,code));
+
+
+            Station *station = new Station(id,code);
+            stations_.insert({code,station}); //adicionar ao map de stations
+            graph_.addVertex(id,code); //meter no grafo
         }
 
-    } else cout << "Could not open the file\n";
+    } else
+        cout << "Could not open the file\n";
 }
 
-template<class T>
-void DataManip<T>::readReservoirs() {
+
+void DataManip::readReservoirs() {
     ifstream in("../Project1DataSetSmall/Reservoirs_Madeira.csv");
     unsigned int id,maxDelivery;
     string reservoir,municipality,code,line;
@@ -58,15 +64,29 @@ void DataManip<T>::readReservoirs() {
             iss.ignore();
             getline(iss, code, ',');
             iss>>maxDelivery;
-            cout<< reservoir <<" " << municipality << " " << id <<" " << code << " " <<maxDelivery <<endl;
+
+
             Reservoir *r = new Reservoir(reservoir,municipality,id,code,maxDelivery);
-            //graph_.addVertex(r);
+            reservoirs_.insert({code,r});
+            graph_.addVertex(id,code);
         }
 
     } else cout << "Could not open the file\n";
 }
 
-template<class T>
-void DataManip<T>::readPipes() {
+
+void DataManip::readPipes() {
     return;
+}
+
+unordered_map<string, City *> DataManip::getCities() {
+    return cities_;
+}
+
+unordered_map<string, Station *> DataManip::getStations() {
+    return stations_;
+}
+
+unordered_map<string, Reservoir *> DataManip::getReservoirs() {
+    return reservoirs_;
 }

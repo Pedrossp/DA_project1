@@ -8,7 +8,6 @@ include_directories(Project1DataSetSmall)
 add_executable(DA_project1
         City.h
         DataManip.h
-        Graph.h
         Reservoir.h
         Station.h
         City.cpp
@@ -16,4 +15,6 @@ add_executable(DA_project1
         Reservoir.cpp
         Station.cpp
         main.cpp
+        Graph.cpp
+        Graph.h
 )

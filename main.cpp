@@ -1,13 +1,15 @@
-//
-// Created by edu on 18-03-2024.
-//
-
-#include "DataManip.cpp"
+#include "DataManip.h"
+#include "iostream"
 using namespace std;
 
 int main(){
-    DataManip<Reservoir*> data;
+    DataManip data;
+    data.readStations();
     data.readReservoirs();
+
+    for ( auto x : data.getReservoirs()){
+        cout<< x.second->getId() << " " << x.second->getCode() <<endl;
+    }
 
 
     return 0;
