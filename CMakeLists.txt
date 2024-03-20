@@ -6,9 +6,15 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(Project1DataSetSmall)
 
 add_executable(DA_project1
-        Graph.h
         City.h
-        City.cpp
         DataManip.h
+        Reservoir.h
+        Station.h
+        City.cpp
         DataManip.cpp
+        Reservoir.cpp
+        Station.cpp
+        main.cpp
+        Graph.cpp
+        Graph.h
 )

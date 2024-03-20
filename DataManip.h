@@ -5,16 +5,18 @@
 #include <string>
 #include "Graph.h"
 #include "City.h"
-
+#include "Station.h"
+#include "Reservoir.h"
 
 using namespace std;
 
-template <class T>
+
 class DataManip {
 
-private:
-    Graph<T> graph_;
-    unordered_map<string, City> cities_;
+    Graph graph_;
+    unordered_map<string, City*> cities_;
+    unordered_map<string, Station*> stations_;
+    unordered_map<string, Reservoir*> reservoirs_;
 
 public:
     DataManip();
@@ -22,6 +24,11 @@ public:
     void readStations();
     void readReservoirs();
     void readPipes();
+
+    unordered_map<string, City*> getCities();
+    unordered_map<string, Station*> getStations();
+    unordered_map<string, Reservoir*> getReservoirs();
+    Graph getGraph();
 };
 
 
