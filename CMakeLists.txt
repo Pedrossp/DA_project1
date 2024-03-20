@@ -17,4 +17,6 @@ add_executable(DA_project1
         main.cpp
         Graph.cpp
         Graph.h
+        Menu.h
+        Menu.cpp
 )

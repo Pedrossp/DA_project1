@@ -6,7 +6,7 @@ void Vertex::addEdge(Vertex *dest, unsigned int capacity) {
     adj.push_back(Edge(dest,capacity));
 }
 
-//constructer
+//constructor
 Vertex::Vertex(unsigned int id, string code) {
     this->id = id;
     this->code = code;
