@@ -3,6 +3,7 @@
 
 #include <unordered_map>
 #include <string>
+#include <limits>
 #include "Graph.h"
 #include "City.h"
 #include "Station.h"
@@ -14,9 +15,10 @@ using namespace std;
 class DataManip {
 
     Graph graph_;
-    unordered_map<string, City*> cities_;
+    unordered_map<string, City*> citiesC_;
     unordered_map<string, Station*> stations_;
     unordered_map<string, Reservoir*> reservoirs_;
+    unordered_map<string, City*> citiesN_;
 
 public:
     DataManip();
@@ -25,10 +27,17 @@ public:
     void readReservoirs();
     void readPipes();
 
-    unordered_map<string, City*> getCities();
+    unordered_map<string, City*> getCitiesC();
+    unordered_map<string, City*> getCitiesN();
     unordered_map<string, Station*> getStations();
     unordered_map<string, Reservoir*> getReservoirs();
     Graph getGraph();
+
+    //edmonds karp
+    string  verefyCityCode(string cityCodeOrName);  //ir buscar code com nome ou code
+    Graph normalizeGraph(); //adicionar super source
+
+    unsigned int maxFlowCity(string cityCodeOrName);
 };
 
 

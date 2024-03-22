@@ -6,6 +6,9 @@
 #include "Reservoir.h"
 
 using namespace std;
+
+const int INF = numeric_limits<int>::max();
+
 DataManip::DataManip() {}
 
 
@@ -34,7 +37,8 @@ void DataManip::readCities() {
 
 
             City *city = new City(name, code, id,population, demand);
-            cities_.insert({code,city}); //adicionar ao map de cities
+            citiesC_.insert({code,city}); //adicionar ao map de cities pelo codigo
+            citiesN_.insert({name, city}); //adicionar ao map de cities pelo nome
             graph_.addVertex(id,code); //meter no grafo
 
         }
@@ -130,8 +134,12 @@ void DataManip::readPipes() {
     } else cout << "Could not open the file\n";
 }
 
-unordered_map<string, City *> DataManip::getCities() {
-    return cities_;
+unordered_map<string, City *> DataManip::getCitiesC() {
+    return citiesC_;
+}
+
+unordered_map<string, City *> DataManip::getCitiesN() {
+    return citiesN_;
 }
 
 unordered_map<string, Station *> DataManip::getStations() {
@@ -145,3 +153,37 @@ unordered_map<string, Reservoir *> DataManip::getReservoirs() {
 Graph DataManip::getGraph() {
     return graph_;
 }
+
+string DataManip::verefyCityCode(string cityNameOrCode) {
+
+    City *city = citiesC_[cityNameOrCode];
+    string cityCode;
+
+    if (city == nullptr){
+        cityCode = citiesN_[cityNameOrCode]->getCode();
+    }
+    else{
+        cityCode = city->getCode();
+    }
+
+    return cityCode;
+}
+
+Graph DataManip::normalizeGraph() {
+
+    Graph graph = getGraph();
+    graph.addVertex(0, "SS"); // super source
+
+    /*for (auto reser: getReservoirs()){
+        newGraph.addEdge("SS",reser.second->getCode(), INF);
+    }*/
+
+}
+
+unsigned int DataManip::maxFlowCity(string cityNameOrCode) {
+
+    string cityCode = verefyCityCode(cityNameOrCode);
+    Graph newGraph = normalizeGraph();
+}
+
+
