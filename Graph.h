@@ -13,25 +13,31 @@ class Vertex;
 
 class Vertex{
 
-    vector<Edge> adj;
+    vector<Edge*> adj;    // *
+    vector<Edge*> incoming;
     unsigned int id;
     string code;
     bool visited;
     bool processing;
     unsigned indegree;
+    Edge* path;
 
 
 public:
     Vertex(unsigned int id,string code);
 
-    vector<Edge> &getAdj();
+    vector<Edge*> &getAdj();   // *
+    vector<Edge*> &getIncoming();
     unsigned int getId();
     string getCode();
+    Edge* getPath();
+
     bool isVisited();
 
     void setId(unsigned int id);
     void setCode(string code);
     void setVisited(bool visited);
+    void setPath(Edge* edj);
 
     void addEdge(Vertex* dest, unsigned int capacity);
 
@@ -47,13 +53,19 @@ public:
 
 class Edge{
     Vertex* dest;
+    Vertex* orig;
     unsigned int capacity;
+    unsigned int flow;
 
 public:
-    Edge(Vertex* d , unsigned int capacity);
+    Edge(Vertex* o, Vertex* d , unsigned int capacity);
 
     Vertex* getDest() const;
+    Vertex* getOrig() const;
     unsigned int getCapacity() const;
+    unsigned int getFlow();
+
+    void setFlow(unsigned int flow_);
 
 };
 

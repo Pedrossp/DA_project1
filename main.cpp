@@ -23,13 +23,22 @@ int main(){
     }
 */
 
-    for ( auto x : data.getGraph().getVertexSet()){
+    /*for ( auto x : data.getGraph().getVertexSet()){
         cout << x.first << " " << "este vértice tem como adjacentes:" << endl;
 
         for(auto y : x.second->getAdj()){
             cout << y.getDest()->getCode() << " " << y.getCapacity() << endl;
         }
-    }
+    }*/
+    /*data.normalizeGraph();
+    for (auto ola: data.getGraph().getVertexSet()){
+        cout << "Este vertice" << ola.second->getCode() << endl;
+
+        for (auto oo: ola.second->getAdj()){
+            cout << "   " << oo->getDest()->getCode() << " " << "com capacidade = " << oo->getCapacity() << endl;
+        }
+    }*/
+    cout << data.maxFlowEdmonds("C_9");
     return 0;
 
 }

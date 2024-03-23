@@ -2,8 +2,10 @@
 
 //Vertex
 
-void Vertex::addEdge(Vertex *dest, unsigned int capacity) {
-    adj.push_back(Edge(dest,capacity));
+void Vertex::addEdge(Vertex *dest, unsigned int capacity) {       //*****************************************************************
+    auto newEdge = new Edge(this, dest,capacity);
+    adj.push_back(newEdge);     // new
+    dest->incoming.push_back(newEdge);       //adicionei isto
 }
 
 //constructor
@@ -19,6 +21,10 @@ unsigned int Vertex::getId() {
 
 string Vertex::getCode() {
     return code;
+}
+
+Edge* Vertex::getPath() {
+    return path;
 }
 
 bool Vertex::isVisited() {
@@ -38,8 +44,16 @@ void Vertex::setVisited(bool visited) {
     this->visited= visited;
 }
 
-vector<Edge> &Vertex::getAdj() {
+void Vertex::setPath(Edge* edj) {
+    this->path = edj;
+}
+
+vector<Edge*> &Vertex::getAdj() {     //*
     return adj;
+}
+
+vector<Edge *> &Vertex::getIncoming() {
+    return incoming;
 }
 
 Vertex *Graph::findVertex(const string &code) const {
@@ -74,7 +88,8 @@ unordered_map<string, Vertex *> Graph::getVertexSet() {
 }
 
 //Edge
-Edge::Edge(Vertex *d, unsigned int capacity) {
+Edge::Edge(Vertex *o, Vertex *d, unsigned int capacity) {
+    this->orig = o;
     this->dest= d;
     this->capacity= capacity;
 }
@@ -83,7 +98,19 @@ Vertex *Edge::getDest() const {
     return dest;
 }
 
+Vertex *Edge::getOrig() const{
+    return orig;
+}
+
 unsigned int Edge::getCapacity() const {
     return capacity;
+}
+
+unsigned int Edge::getFlow() {
+    return flow;
+}
+
+void Edge::setFlow(unsigned int flow_) {
+    flow = flow_;
 }
 
