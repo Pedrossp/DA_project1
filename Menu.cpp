@@ -12,7 +12,7 @@ void Menu::MainMenu() {
     cout << endl << "┌───────────────────────────────────┐" << endl
                  << "│             Main Menu             │" << endl
                  << "├───────────────────────────────────┤" << endl
-                 << "│  1 - Find Flights                 │" << endl
+                 << "│  1 - Get Max Amount of Water      │" << endl
                  << "│  2 - Get Statistics               │" << endl
                  << "│  3 - Airport Info                 │" << endl
                  << "│  4 - Other Info                   │" << endl
@@ -27,7 +27,7 @@ void Menu::MainMenu() {
 
         switch (option) {
             case ('1'):
-                findFlights();
+                maxWater();
                 return MainMenu();
             case ('2'):
                 getStatistics();
@@ -48,14 +48,14 @@ void Menu::MainMenu() {
 }
 
 
-void Menu::findFlights() {
+void Menu::maxWater() {
     char inputTypeO;
     cout << endl << endl;
     cout << "┌────────────────────────────────────┐" << endl
-         << "│            Find Flights            │" << endl
+         << "│      Get Max Amount of Water       │" << endl
          << "├────────────────────────────────────┤" << endl
-         << "│  1 - By Airport                    │" << endl
-         << "│  2 - By City                       │" << endl
+         << "│  1 - From all Cities               │" << endl
+         << "│  2 - By a Specific City            │" << endl
          << "│  3 - By Coordinates                │" << endl
          << "│  4 - By Coordinates & Radius       │" << endl
          << "│  b - Go Back                       │" << endl
@@ -74,20 +74,24 @@ void Menu::findFlights() {
 
         switch(inputTypeO) {
             case ('1'):
-                cout << endl << "Insert origin airport: " << endl;
-                cin >> inputOrigin;
+                // cout << endl << "Insert origin airport: " << endl;
+                //cin >> inputOrigin;
+                /*
                 if (data_.getAirports().find(inputOrigin) == data_.getAirports().end()){
                     cout << "\nNot a valid airport...\nTry again!\n\n";
-                    findFlights();
+                    maxWater();
                 }
+                */
+
+                // !!!! dar cout da lista toda (chamar essa mesma função e escrever frase bonita).
                 flag = 0;
                 break;
             case ('2'):
-                cout << endl << "Insert origin city: [Format: <city>,<country> (because of repeated city names)]" << endl;
+                cout << endl << "Insert city: [Format: <city> or <code>]" << endl;
                 getline(cin >>ws, inputOrigin);
                 if (data_.getCities().find(inputOrigin) == data_.getCities().end()){
                     cout << "\nNot a valid city...\nTry again!\n\n";
-                    findFlights();
+                    maxWater();
                 }
                 flag = 0;
                 break;
