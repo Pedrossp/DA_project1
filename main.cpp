@@ -30,14 +30,15 @@ int main(){
             cout << y.getDest()->getCode() << " " << y.getCapacity() << endl;
         }
     }*/
-
-    for (auto ola: data.normalizeGraph().getVertexSet()){
+    /*data.normalizeGraph();
+    for (auto ola: data.getGraph().getVertexSet()){
         cout << "Este vertice" << ola.second->getCode() << endl;
 
         for (auto oo: ola.second->getAdj()){
-            cout << "   " << oo.getDest()->getCode() << " " << "com capacidade = " << oo.getCapacity() << endl;
+            cout << "   " << oo->getDest()->getCode() << " " << "com capacidade = " << oo->getCapacity() << endl;
         }
-    }
+    }*/
+    cout << data.maxFlowEdmonds("C_9");
     return 0;
 
 }

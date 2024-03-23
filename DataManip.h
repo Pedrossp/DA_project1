@@ -4,6 +4,8 @@
 #include <unordered_map>
 #include <string>
 #include <limits>
+#include <queue>
+#include <algorithm>
 #include "Graph.h"
 #include "City.h"
 #include "Station.h"
@@ -35,9 +37,13 @@ public:
 
     //edmonds karp
     string  verefyCityCode(string cityCodeOrName);  //ir buscar code com nome ou code
-    Graph normalizeGraph(); //adicionar super source
+    void normalizeGraph(); //adicionar super source
+    bool findAugmentingPath(Vertex *s, Vertex *t);
+    void testAndVisit(queue<Vertex*> &q, Edge *e, Vertex *w, double residual);
+    double findMinResidualAlongPath(Vertex* s, Vertex* t);
+    void augmentFlowAlongPath(Vertex *s, Vertex *t, double f);
 
-    unsigned int maxFlowCity(string cityCodeOrName);
+    unsigned int maxFlowEdmonds(string cityCodeOrName);
 };
 
 

@@ -12,22 +12,22 @@ private:
     string code_;
     string population_;
     unsigned int id_;
-    float demand_;
+    double demand_;
 
 public:
-    City(string& name, string& code, unsigned int id, string population, float demand);
+    City(string& name, string& code, unsigned int id, string population, double demand);
 
     string getName();
     string getCode();
     string getPopulation();
     unsigned int getId();
-    float getDemand();
+    double getDemand();
 
     void setName(string& name);
     void setCode(string& code);
     void setPopulation(string& population);
     void setId(unsigned int id);
-    void setDemand(float demand);
+    void setDemand(double demand);
 };
 
 
