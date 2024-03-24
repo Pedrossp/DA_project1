@@ -265,19 +265,19 @@ void DataManip::readPipesL() {
     } else cout << "Could not open the file\n";
 }
 
-unordered_map<string, City *> DataManip::getCitiesC() {
+map<string, City *> DataManip::getCitiesC() {
     return citiesC_;
 }
 
-unordered_map<string, City *> DataManip::getCitiesN() {
+map<string, City *> DataManip::getCitiesN() {
     return citiesN_;
 }
 
-unordered_map<string, Station *> DataManip::getStations() {
+map<string, Station *> DataManip::getStations() {
     return stations_;
 }
 
-unordered_map<string, Reservoir *> DataManip::getReservoirs() {
+map<string, Reservoir *> DataManip::getReservoirs() {
     return reservoirs_;
 }
 
@@ -288,7 +288,7 @@ Graph DataManip::getGraph() {
 
 
 //Edmonds
-string DataManip::verefyCityCode(string cityNameOrCode) {
+string DataManip::verifyCityCode(string cityNameOrCode) {
 
     City *city = citiesC_[cityNameOrCode];
     string cityCode;
@@ -309,11 +309,12 @@ void DataManip::normalizeGraph() {    //esta a mudar no grafo original
     graph_.addVertex(-1, "SSK"); //super sink
 
     for (auto reser: getReservoirs()){
-        graph_.addEdge("SS",reser.second->getCode(), INF);
+
+        graph_.addEdge("SS",reser.second->getCode(), reser.second->getMaxDelivery());
     }
 
     for (auto city: getCitiesC()){
-        graph_.addEdge(city.second->getCode(),"SSK", INF);
+        graph_.addEdge(city.second->getCode(),"SSK", city.second->getDemand());
     }
 }
 
@@ -388,17 +389,16 @@ void DataManip::augmentFlowAlongPath(Vertex *s, Vertex *t, double f) {
     }
 }
 
-unsigned int DataManip::maxFlowEdmonds(string cityNameOrCode) {
+void DataManip::maxFlowEdmonds() {
 
-    string cityCode = verefyCityCode(cityNameOrCode);  //tirar
     normalizeGraph();
 
     Vertex* s = graph_.findVertex("SS");
     Vertex* t = graph_.findVertex("SSK");
 
-    /*if (s == nullptr || t == nullptr || s == t) {        // verificar se é preciso msm
+    if (s == nullptr || t == nullptr || s == t) {        // verificar se é preciso msm
         throw std::logic_error("Invalid source and/or target vertex");
-    }*/
+    }
 
     for (auto vertex : graph_.getVertexSet()) {
         for (auto e: vertex.second->getAdj()) {
@@ -406,7 +406,7 @@ unsigned int DataManip::maxFlowEdmonds(string cityNameOrCode) {
         }
     }
 
-    while( findAugmentingPath(s, t) ) {
+    while(findAugmentingPath(s, t)) {
         double f = findMinResidualAlongPath(s, t);
         augmentFlowAlongPath(s, t, f);
     }
@@ -417,7 +417,36 @@ unsigned int DataManip::maxFlowEdmonds(string cityNameOrCode) {
     for (auto edg: graph_.getVertexSet()["SSK"]->getIncoming()){
         soma += edg->getFlow();
     }
-    return soma;
+}
+
+void DataManip::maxFLowTotalCity(int choose, string cityCodeOrName) {
+
+    maxFlowEdmonds();
+
+    switch (choose) {
+        case 0: {   //total
+
+            cout << "Maximum amount of water per cities:" << endl << endl;
+            int sumT = 0;
+
+            for (auto edg: graph_.getVertexSet()["SSK"]->getIncoming()) {
+                sumT += edg->getFlow();
+                string cityCode = edg->getOrig()->getCode();
+                cout << cityCode << "(" << citiesC_[cityCode]->getName() << "): " << edg->getFlow() << " m³/sec" << endl;
+            }
+            cout << endl << "Total maximum water flow is " << sumT << " m³/sec."<< endl;
+            break;
+        }
+        case 1: {
+            string cityCode = verifyCityCode(cityCodeOrName);
+            for (auto edg: graph_.getVertexSet()["SSK"]->getIncoming()) {
+                if (edg->getOrig()->getCode() == cityCode) {
+                    cout << "Maximum amount of water that reaches " << citiesC_[edg->getOrig()->getCode()]->getName() << " is " <<edg->getFlow() << " m³/sec." << endl;
+                }
+            }
+            break;
+        }
+    }
 }
 
 

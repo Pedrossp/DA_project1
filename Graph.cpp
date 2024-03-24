@@ -83,7 +83,7 @@ bool Graph::addEdge(const string &sourceCode, const string &destCode, unsigned i
     return true;
 }
 
-unordered_map<string, Vertex *> Graph::getVertexSet() {
+map<string, Vertex *> Graph::getVertexSet() {
     return vertexSet;
 }
 
@@ -113,4 +113,3 @@ unsigned int Edge::getFlow() {
 void Edge::setFlow(unsigned int flow_) {
     flow = flow_;
 }
-

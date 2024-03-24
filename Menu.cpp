@@ -1,4 +1,4 @@
-#include "Menu.h"
+/*#include "Menu.h"
 #include <iostream>
 using namespace std;
 
@@ -84,7 +84,7 @@ void Menu::maxWater() {
                 */
 
                 // !!!! dar cout da lista toda (chamar essa mesma função e escrever frase bonita).
-                flag = 0;
+                /*flag = 0;
                 break;
             case ('2'):
                 cout << endl << "Insert city: [Format: <city> or <code>]" << endl;
@@ -644,4 +644,4 @@ void Menu::back() const {
 void Menu::exitProgram() const {
     cout << endl << "Exiting program..." << endl;
     exit(0);
-}
+}*/

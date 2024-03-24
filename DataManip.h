@@ -17,10 +17,10 @@ using namespace std;
 class DataManip {
 
     Graph graph_;
-    unordered_map<string, City*> citiesC_;
-    unordered_map<string, Station*> stations_;
-    unordered_map<string, Reservoir*> reservoirs_;
-    unordered_map<string, City*> citiesN_;
+    map<string, City*> citiesC_;
+    map<string, Station*> stations_;
+    map<string, Reservoir*> reservoirs_;
+    map<string, City*> citiesN_;
 
 public:
     DataManip();
@@ -34,21 +34,23 @@ public:
     void readReservoirsL();
     void readPipesL();
 
-    unordered_map<string, City*> getCitiesC();
-    unordered_map<string, City*> getCitiesN();
-    unordered_map<string, Station*> getStations();
-    unordered_map<string, Reservoir*> getReservoirs();
+    map<string, City*> getCitiesC();
+    map<string, City*> getCitiesN();
+    map<string, Station*> getStations();
+    map<string, Reservoir*> getReservoirs();
     Graph getGraph();
 
     //edmonds karp
-    string  verefyCityCode(string cityCodeOrName);  //ir buscar code com nome ou code
+    string  verifyCityCode(string cityCodeOrName);  //ir buscar code com nome ou code
     void normalizeGraph(); //adicionar super source
     bool findAugmentingPath(Vertex *s, Vertex *t);
     void testAndVisit(queue<Vertex*> &q, Edge *e, Vertex *w, double residual);
     double findMinResidualAlongPath(Vertex* s, Vertex* t);
     void augmentFlowAlongPath(Vertex *s, Vertex *t, double f);
 
-    unsigned int maxFlowEdmonds(string cityCodeOrName);
+    void maxFlowEdmonds();
+    void maxFLowTotalCity(int choose, string cityCodeOrName);
+
 };
 
 

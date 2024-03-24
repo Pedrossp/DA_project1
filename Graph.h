@@ -2,7 +2,7 @@
 #ifndef DA_PROJECT1_GRAPH_H
 #define DA_PROJECT1_GRAPH_H
 
-#include <unordered_map>
+#include <map>
 #include <string>
 #include <vector>
 
@@ -43,12 +43,12 @@ public:
 
 };
 class Graph {
-    unordered_map< string , Vertex* > vertexSet; // unordered map faz sentido ? esperem pelo próximo episódio
+    map< string , Vertex* > vertexSet; // unordered map faz sentido ? esperem pelo próximo episódio
 public:
     Vertex* findVertex(const string& code) const;
     bool addVertex(unsigned int id,string code);
     bool addEdge(const string &sourceCode,const string &destCode, unsigned int capacity);
-    unordered_map<string, Vertex*> getVertexSet();
+    map<string, Vertex*> getVertexSet();
 };
 
 class Edge{

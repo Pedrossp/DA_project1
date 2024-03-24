@@ -46,7 +46,7 @@ int main(){
             cout << "   " << oo->getDest()->getCode() << " " << "com capacidade = " << oo->getCapacity() << endl;
         }
     }*/
-    cout << data.maxFlowEdmonds("C_9");
+    data.maxFLowTotalCity(0, "Lisboa");
     return 0;
 
 }
