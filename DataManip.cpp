@@ -314,7 +314,7 @@ void DataManip::normalizeGraph() {    //esta a mudar no grafo original
     }
 
     for (auto city: getCitiesC()){
-        graph_.addEdge(city.second->getCode(),"SSK", city.second->getDemand());
+        graph_.addEdge(city.second->getCode(),"SSK", INF);    //city.second->getDemand()
     }
 }
 
@@ -445,6 +445,21 @@ void DataManip::maxFLowTotalCity(int choose, string cityCodeOrName) {
                 }
             }
             break;
+        }
+    }
+}
+
+void DataManip::getDeficit() {
+
+    maxFlowEdmonds();
+    cout << "The deficit of water per city:" << endl << endl;
+
+    for (auto edg: graph_.getVertexSet()["SSK"]->getIncoming()) {
+
+        string cityCode = edg->getOrig()->getCode();
+        int deficit = citiesC_[cityCode]->getDemand() - edg->getFlow();
+        if (deficit > 0){
+            cout << cityCode << "(" << citiesC_[cityCode]->getName() << "): " << deficit << " m³/sec" << endl;
         }
     }
 }

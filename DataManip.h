@@ -51,6 +51,8 @@ public:
     void maxFlowEdmonds();
     void maxFLowTotalCity(int choose, string cityCodeOrName);
 
+    void getDeficit();
+
 };
 
 
