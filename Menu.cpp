@@ -1,4 +1,4 @@
-/*#include "Menu.h"
+#include "Menu.h"
 #include <iostream>
 using namespace std;
 
@@ -30,10 +30,10 @@ void Menu::MainMenu() {
                 maxWater();
                 return MainMenu();
             case ('2'):
-                getStatistics();
+                //getStatistics();
                 return MainMenu();
             case ('3'):
-                apInfo();
+                //apInfo();
                 return MainMenu();
             case ('4'):
                 otherInfo();
@@ -68,31 +68,25 @@ void Menu::maxWater() {
     string inputOrigin;
     int inputRadiusO = 0;
 
-    while(flag) {
+    while (flag) {
         cout << "Choose an option: ";
         cin >> inputTypeO;
 
-        switch(inputTypeO) {
+        switch (inputTypeO) {
             case ('1'):
-                // cout << endl << "Insert origin airport: " << endl;
-                //cin >> inputOrigin;
-                /*
-                if (data_.getAirports().find(inputOrigin) == data_.getAirports().end()){
-                    cout << "\nNot a valid airport...\nTry again!\n\n";
-                    maxWater();
-                }
-                */
+                data_.maxFLowTotalCity(0, "");
 
-                // !!!! dar cout da lista toda (chamar essa mesma função e escrever frase bonita).
-                /*flag = 0;
+                flag = 0;
                 break;
+
             case ('2'):
-                cout << endl << "Insert city: [Format: <city> or <code>]" << endl;
-                getline(cin >>ws, inputOrigin);
-                if (data_.getCities().find(inputOrigin) == data_.getCities().end()){
+                cout << endl << "Insert city: [Format: city or code]" << endl;
+                getline(cin >> ws, inputOrigin);
+                if ((data_.getCitiesC()[inputOrigin] == nullptr) && (data_.getCitiesN()[inputOrigin] == nullptr)) {
                     cout << "\nNot a valid city...\nTry again!\n\n";
                     maxWater();
                 }
+                data_.maxFLowTotalCity(1, inputOrigin);
                 flag = 0;
                 break;
             case ('3'):
@@ -116,7 +110,8 @@ void Menu::maxWater() {
                 cout << endl << "Not a valid option!" << endl;
         }
     }
-
+}
+/*
     cout << endl;
     cout << "Choose the type of destination:" << endl;
     cout << "┌────────────────────────────────────┐" << endl
@@ -547,7 +542,7 @@ void Menu::apInfo() {
 }
 
 
-
+*/
 void Menu::otherInfo() {
     char option;
     int k;
@@ -573,17 +568,17 @@ void Menu::otherInfo() {
             case ('1') : {
                 cout << "Top-K airport with most flights? ";
                 cin >> k;
-                data_.maxKAirport(k);
+                //data_.maxKAirport(k);
                 back();
                 return otherInfo();
             }
             case ('2'):
-                data_.essentialAirports();
+                //data_.essentialAirports();
                 back();
                 return otherInfo();
 
             case('3'):
-                data_.MaximumTrip();
+                //data_.MaximumTrip();
                 back();
                 return otherInfo();
             case ('b'):
@@ -598,7 +593,7 @@ void Menu::otherInfo() {
 }
 
 
-
+/*
 vector<string> Menu::createVec() {
     bool flag = true;
     vector<string> v = {};
@@ -618,7 +613,7 @@ vector<string> Menu::createVec() {
     return v;
 }
 
-
+*/
 
 
 void Menu::back() const {
@@ -644,4 +639,4 @@ void Menu::back() const {
 void Menu::exitProgram() const {
     cout << endl << "Exiting program..." << endl;
     exit(0);
-}*/
+}

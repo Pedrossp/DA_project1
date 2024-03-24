@@ -1,5 +1,7 @@
 #include "DataManip.h"
 #include "iostream"
+#include "Menu.h"
+
 using namespace std;
 
 int main(){
@@ -16,6 +18,9 @@ int main(){
     data.readReservoirsL();
     data.readCitiesL();
     data.readPipesL();
+
+    //Menu menu = Menu(data);
+    //menu.MainMenu();
 
      /*
     for ( auto x : data.getReservoirs()){
@@ -46,7 +51,8 @@ int main(){
             cout << "   " << oo->getDest()->getCode() << " " << "com capacidade = " << oo->getCapacity() << endl;
         }
     }*/
-    data.maxFLowTotalCity(0, "Lisboa");
+    //data.maxFLowTotalCity(0, "Lisboa");
+
     return 0;
 
 }
