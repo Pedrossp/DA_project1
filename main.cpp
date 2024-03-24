@@ -5,10 +5,18 @@ using namespace std;
 int main(){
     DataManip data;
 
+    /*//Smal data set
     data.readStations();
     data.readReservoirs();
     data.readCities();
-    data.readPipes();
+    data.readPipes();*/
+
+    //Large data set
+    data.readStationsL();
+    data.readReservoirsL();
+    data.readCitiesL();
+    data.readPipesL();
+
      /*
     for ( auto x : data.getReservoirs()){
         cout<< x.second->getId() << " " << x.second->getCode() <<endl;

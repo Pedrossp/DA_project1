@@ -29,6 +29,11 @@ public:
     void readReservoirs();
     void readPipes();
 
+    void readCitiesL();
+    void readStationsL();
+    void readReservoirsL();
+    void readPipesL();
+
     unordered_map<string, City*> getCitiesC();
     unordered_map<string, City*> getCitiesN();
     unordered_map<string, Station*> getStations();

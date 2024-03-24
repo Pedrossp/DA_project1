@@ -12,7 +12,7 @@ const int INF = numeric_limits<int>::max();
 
 DataManip::DataManip() {}
 
-
+//Smal data set
 void DataManip::readCities() {
     ifstream in("../Project1DataSetSmall/Cities_Madeira.csv");
     unsigned int id;
@@ -112,6 +112,132 @@ void DataManip::readReservoirs() {
 
 void DataManip::readPipes() {
     ifstream in("../Project1DataSetSmall/Pipes_Madeira.csv");
+    string service_point_a, service_point_b, line;
+    unsigned int capacity, direction;
+
+    getline(in, line);
+
+    if(in.is_open()) {
+        while(getline(in, line)){
+            istringstream iss(line);
+
+            getline(iss, service_point_a, ',');
+            getline(iss, service_point_b, ',');
+            iss>>capacity;
+            iss.ignore();
+            iss>>direction;
+
+            if (direction == 1){
+                graph_.addEdge(service_point_a, service_point_b, capacity);
+            }
+            else{
+                graph_.addEdge(service_point_a, service_point_b, capacity);
+                graph_.addEdge(service_point_b, service_point_a, capacity);
+            }
+        }
+
+    } else cout << "Could not open the file\n";
+}
+
+//Large data set
+void DataManip::readCitiesL() {
+    ifstream in("../Project1LargeDataSet/Cities.csv");
+    unsigned int id;
+    string name,line, code, population;
+    double demand;
+
+    getline(in, line);
+
+    if (in.is_open()) {
+
+        while(getline(in, line)){
+
+            istringstream iss(line);
+
+            getline(iss, name, ',');
+            iss >> id;
+            iss.ignore();
+            getline(iss, code, ',');
+            iss >> demand;
+            iss.ignore();
+            iss >> population;
+
+            //cout << name << " " << id << " " << code << " " << demand << " " << population << endl;
+
+            City *city = new City(name, code, id,population, demand);
+            citiesC_.insert({code,city}); //adicionar ao map de cities pelo codigo
+            citiesN_.insert({name, city}); //adicionar ao map de cities pelo nome
+            graph_.addVertex(id,code); //meter no grafo
+
+        }
+
+    } else
+        cout << "Could not open the file\n";
+}
+
+
+void DataManip::readStationsL() {
+    ifstream in("../Project1LargeDataSet/Stations.csv");
+    unsigned int id;
+    string code,line;
+
+    getline(in, line);
+
+    if (in.is_open()) {
+
+        while(getline(in, line)){
+
+
+            istringstream iss(line);
+            iss>>id;
+            iss.ignore();
+            iss >> code;
+
+            //cout << id << " " << code << endl;
+
+            Station *station = new Station(id,code);
+            stations_.insert({code,station}); //adicionar ao map de stations
+            graph_.addVertex(id,code); //meter no grafo
+        }
+
+    } else
+        cout << "Could not open the file\n";
+}
+
+
+void DataManip::readReservoirsL() {
+    ifstream in("../Project1LargeDataSet/Reservoir.csv");
+    unsigned int id,maxDelivery;
+    string reservoir,municipality,code,line;
+
+    getline(in, line);
+
+    if (in.is_open()) {
+
+        while(getline(in, line)){
+
+            istringstream iss(line);
+
+            getline(iss, reservoir, ',');
+            getline(iss, municipality, ',');
+            iss>>id;
+            iss.ignore();
+            getline(iss, code, ',');
+            iss>>maxDelivery;
+
+            //cout << reservoir << " " << municipality << " " <<id << " " << code << " " <<maxDelivery << endl;
+
+            Reservoir *r = new Reservoir(reservoir,municipality,id,code,maxDelivery);
+            reservoirs_.insert({code,r});
+            graph_.addVertex(id,code);
+        }
+
+    } else cout << "Could not open the file\n";
+}
+
+
+void DataManip::readPipesL() {
+    ifstream in("../Project1LargeDataSet/Pipes.csv");
     string service_point_a, service_point_b, line;
     unsigned int capacity, direction;
 
