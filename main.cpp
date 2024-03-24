@@ -53,6 +53,7 @@ int main(){
     }*/
     //data.maxFLowTotalCity(0, "Lisboa");
 
+    data.getDeficit();
     return 0;
 
 }
