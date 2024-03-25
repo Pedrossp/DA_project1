@@ -6,12 +6,13 @@ using namespace std;
 
 int main(){
     DataManip data;
-
-    /*//Smal data set
+    /*
+    //Smal data set
     data.readStations();
     data.readReservoirs();
     data.readCities();
-    data.readPipes();*/
+    data.readPipes();
+     */
 
     //Large data set
     data.readStationsL();
@@ -53,7 +54,39 @@ int main(){
     }*/
     //data.maxFLowTotalCity(0, "Lisboa");
 
-    data.getDeficit();
+
+    /*
+    for(auto x : data.getGraph().getVertexSet()){
+        cout << x.first  << " " << "este vértice tem como adjacentes: " << endl;
+        for(auto y: x.second->getAdj()){
+            cout << y->getDest()->getCode()<< "com fluxo " << y->getFlow()<<endl;
+        }
+    }*/
+
+    //data.maxFLowTotalCity(0,"");
+    data.maxFlowEdmonds();
+    data.getAverageDifference();
+   //data.getDeficit();
+    for(auto x: data.getReservoirs()){
+        int sum=0;
+        for(auto y:data.getGraph().getVertexSet()[x.first]->getAdj()){
+            sum+=y->getFlow();
+        }
+        cout << x.first <<" fluxo:" << sum << endl;
+        cout << "capacidade: "<< x.second->getMaxDelivery()<<endl<< endl;
+    }
+    data.BalanceFlow();
+    cout << "..............................."<< endl;
+    for(auto x: data.getReservoirs()){
+        int sum=0;
+        for(auto y:data.getGraph().getVertexSet()[x.first]->getAdj()){
+            sum+=y->getFlow();
+        }
+        cout << x.first <<" fluxo:" << sum << endl;
+        cout << "capacidade: "<< x.second->getMaxDelivery()<<endl<< endl;
+    }
+    data.getAverageDifference();
+    //data.getDeficit();
     return 0;
 
 }

@@ -32,6 +32,7 @@ public:
     string getCode();
     Edge* getPath();
 
+
     bool isVisited();
 
     void setId(unsigned int id);
@@ -39,8 +40,14 @@ public:
     void setVisited(bool visited);
     void setPath(Edge* edj);
 
+
     void addEdge(Vertex* dest, unsigned int capacity);
 
+    void removeOutgoingEdges();
+    bool removeEdge(string code);
+    void deleteEdge(Edge *edge);
+
+    unsigned int getCurrentFlow();
 };
 class Graph {
     map< string , Vertex* > vertexSet; // unordered map faz sentido ? esperem pelo próximo episódio
@@ -49,6 +56,9 @@ public:
     bool addVertex(unsigned int id,string code);
     bool addEdge(const string &sourceCode,const string &destCode, unsigned int capacity);
     map<string, Vertex*> getVertexSet();
+
+    bool removeVertex(string code);
+
 };
 
 class Edge{

@@ -27,6 +27,7 @@ Edge* Vertex::getPath() {
     return path;
 }
 
+
 bool Vertex::isVisited() {
     return visited;
 }
@@ -54,6 +55,55 @@ vector<Edge*> &Vertex::getAdj() {     //*
 
 vector<Edge *> &Vertex::getIncoming() {
     return incoming;
+}
+
+void Vertex::removeOutgoingEdges() {
+    auto it = adj.begin();
+    while(it!= adj.end()){
+        Edge *edge= *it;
+        it = adj.erase(it);
+        deleteEdge(edge);
+    }
+}
+
+bool Vertex::removeEdge(std::string code) {
+    bool removedEdge=false;
+    auto it = adj.begin();
+    while(it!=adj.end()){
+        Edge *edge= *it;
+        Vertex *dest = edge->getDest();
+        if(dest->getCode()== code){
+            it=adj.erase(it);
+            deleteEdge(edge);
+            removedEdge = true;
+        }
+        else{
+            it++;
+        }
+    }
+    return removedEdge;
+}
+
+void Vertex::deleteEdge(Edge *edge) {
+    Vertex *dest = edge->getDest();
+    auto it = dest->incoming.begin();
+    while(it != dest->incoming.end()){
+        if((*it)->getOrig()->getCode()==code){
+            it=dest->incoming.erase(it);
+        }
+        else{
+            it++;
+        }
+    }
+    delete edge;
+}
+
+unsigned int Vertex::getCurrentFlow() {
+    unsigned int sum=0;
+    for(auto edge: this->adj){
+        sum+ edge->getFlow();
+    }
+    return sum;
 }
 
 Vertex *Graph::findVertex(const string &code) const {
@@ -85,6 +135,23 @@ bool Graph::addEdge(const string &sourceCode, const string &destCode, unsigned i
 
 map<string, Vertex *> Graph::getVertexSet() {
     return vertexSet;
+}
+
+
+bool Graph::removeVertex(string code) {
+    for(auto it = vertexSet.begin();it!= vertexSet.end();it++){
+        if((*it).second->getCode()== code){
+            auto v = *it;
+            v.second->removeOutgoingEdges();
+            for(auto u: vertexSet){
+                u.second->removeEdge(v.second->getCode());
+            }
+            vertexSet.erase(it);
+            delete v.second;
+            return true;
+        }
+    }
+    return false;
 }
 
 //Edge

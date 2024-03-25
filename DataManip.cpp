@@ -314,7 +314,7 @@ void DataManip::normalizeGraph() {    //esta a mudar no grafo original
     }
 
     for (auto city: getCitiesC()){
-        graph_.addEdge(city.second->getCode(),"SSK", INF);    //city.second->getDemand()
+        graph_.addEdge(city.second->getCode(),"SSK", city.second->getDemand());    //city.second->getDemand()
     }
 }
 
@@ -417,6 +417,8 @@ void DataManip::maxFlowEdmonds() {
     for (auto edg: graph_.getVertexSet()["SSK"]->getIncoming()){
         soma += edg->getFlow();
     }
+    graph_.removeVertex("SS");
+    graph_.removeVertex("SSK");
 }
 
 void DataManip::maxFLowTotalCity(int choose, string cityCodeOrName) {
@@ -429,21 +431,24 @@ void DataManip::maxFLowTotalCity(int choose, string cityCodeOrName) {
             cout << "Maximum amount of water per cities:" << endl << endl;
             int sumT = 0;
 
-            for (auto edg: graph_.getVertexSet()["SSK"]->getIncoming()) {
-                sumT += edg->getFlow();
-                string cityCode = edg->getOrig()->getCode();
-                cout << cityCode << "(" << citiesC_[cityCode]->getName() << "): " << edg->getFlow() << " m³/sec" << endl;
+            for(auto city: citiesC_){
+                int sumC =0;
+                for(auto edge : graph_.getVertexSet()[city.first]->getIncoming()){
+                        sumT+=edge->getFlow();
+                        sumC+= edge->getFlow();
+                }
+                cout << city.first << "(" << citiesC_[city.first]->getName() << "): " << sumC << " m³/sec" << endl;
             }
             cout << endl << "Total maximum water flow is " << sumT << " m³/sec."<< endl;
             break;
         }
         case 1: {
             string cityCode = verifyCityCode(cityCodeOrName);
-            for (auto edg: graph_.getVertexSet()["SSK"]->getIncoming()) {
-                if (edg->getOrig()->getCode() == cityCode) {
-                    cout << "Maximum amount of water that reaches " << citiesC_[edg->getOrig()->getCode()]->getName() << " is " <<edg->getFlow() << " m³/sec." << endl;
-                }
+            int sumC=0;
+            for(auto edge:graph_.getVertexSet()[cityCode]->getIncoming()){
+                sumC+= edge->getFlow();
             }
+            cout << "Maximum amount of water that reaches " << citiesC_[cityCode]->getName() << " is " <<sumC << " m³/sec." << endl;
             break;
         }
     }
@@ -464,4 +469,85 @@ void DataManip::getDeficit() {
     }
 }
 
+
+void DataManip::getAverageDifference() {
+    int count = 0;
+    int sum = 0;
+    int maxDiff = 0;
+    int diff = 0;
+    vector<int> differences; // Armazenar as diferenças
+
+    for (auto vertex : graph_.getVertexSet()) {
+        for (auto edge : vertex.second->getAdj()) {
+            count++;
+            diff = edge->getCapacity() - edge->getFlow();
+            differences.push_back(diff); // Armazenar a diferença
+            sum += diff;
+            if (diff > maxDiff) {
+                maxDiff = diff;
+            }
+        }
+    }
+
+    int average = sum / count;
+    int variance = 0;
+
+    for (int d : differences) {
+        variance += pow(d - average, 2); // Acumular as diferenças ao quadrado
+    }
+
+    variance /= count; // Dividir pela contagem total de diferenças
+
+    cout << endl << "Average difference is " << average << endl;
+    cout << "Max difference is " << maxDiff << endl;
+    cout << "Variance is " << variance<<endl;
+}
+
+void DataManip::BalanceFlow() { // valores do fluxo podem aumentar 1 ou 2 em alguns pq???
+    for(auto v: graph_.getVertexSet()) {
+        double totalCapacity = 0.0;
+        double totalFlow = 0.0;
+
+        for(auto e: v.second->getAdj()) {
+            totalCapacity += e->getCapacity();
+            totalFlow += e->getFlow();
+        }
+
+        double diff = totalCapacity - totalFlow; // o que sobrou do vertice
+
+        for(auto e : v.second->getAdj()) {
+            double proportion = (totalCapacity != 0) ? e->getCapacity() / totalCapacity : 0.0;
+            double additionalFlow = diff * proportion;
+
+            if(additionalFlow > (e->getCapacity() - e->getFlow())) {
+                additionalFlow = e->getCapacity() - e->getFlow();
+            }
+
+            e->setFlow(e->getFlow() + additionalFlow);
+
+            if(v.first.substr(0, 1) == "R") {
+                unsigned int maxDelivery = reservoirs_[v.first]->getMaxDelivery();
+                double totalReservoirFlow = 0.0;
+                int numEdges = 0;
+
+                // Calcular totalFlow apenas dos vértices adjacentes ao reservatório
+                for(auto edge : v.second->getAdj()) {
+                    totalReservoirFlow += edge->getFlow();
+                    numEdges++;
+                }
+
+                // Verificar se totalFlow excede maxDelivery
+                if(totalReservoirFlow > maxDelivery) {
+                    double excessFlow = totalReservoirFlow - maxDelivery;
+                    double reduceProportion = excessFlow / numEdges;
+
+                    // Aplicar o fator de redução apenas aos vértices adjacentes ao reservatório
+                    for(auto edge : v.second->getAdj()) {
+                        edge->setFlow(edge->getFlow() - reduceProportion);
+                    }
+                }
+            }
+        }
+    }
+}
 

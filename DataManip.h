@@ -1,6 +1,7 @@
 #ifndef DA_PROJECT1_DATAMANIP_H
 #define DA_PROJECT1_DATAMANIP_H
 
+#include <cmath>
 #include <unordered_map>
 #include <string>
 #include <limits>
@@ -52,6 +53,9 @@ public:
     void maxFLowTotalCity(int choose, string cityCodeOrName);
 
     void getDeficit();
+
+    void getAverageDifference();
+    void BalanceFlow();
 
 };
 
