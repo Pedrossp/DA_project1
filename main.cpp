@@ -91,7 +91,7 @@ int main(){
     //data.getDeficit();*/
 
     //data.reservoirOutOfCommission("Ribeiro Frio");
-    data.stationOutOfCommission("PS_1");
+    data.stationRemoved("PS_1");
     return 0;
 
 }

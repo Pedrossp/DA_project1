@@ -577,7 +577,7 @@ string DataManip::verifyReservoirCode(string reservoirNameOrCode) {
     }
 }
 
-void DataManip::reservoirOutOfCommission(string codeOrName) {
+void DataManip::reservoirOutOfCommission(string codeOrName) { //3.1
 
     maxFlowEdmonds();
     map<string, int>  oldFlowMap;
@@ -616,7 +616,7 @@ void DataManip::reservoirOutOfCommission(string codeOrName) {
 
 }
 
-void DataManip::stationOutOfCommission(string code) {
+void DataManip::stationRemoved(string code) { //3.2
 
     maxFlowEdmonds();
     map<string, int>  oldFlowMap;
@@ -641,7 +641,7 @@ void DataManip::stationOutOfCommission(string code) {
 
     maxFlowEdmonds();
 
-    cout << "Affected city by the removal of " << code << ": " << endl << endl;
+    cout << "Affected cities by the removal of " << code << ": " << endl << endl;
     bool affected = false;
 
     for (auto city: citiesC_){
