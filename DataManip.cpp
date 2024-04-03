@@ -673,10 +673,51 @@ void DataManip::stationRemoved(string code) { //3.2
 
 }
 
+void DataManip::pipelineRemoved(vector<pair<string, string>> vector) {
+    maxFlowEdmonds();
+    map<string, int>  oldFlowMap;
+    map<Edge*,int > oldCapacity;
+    for (auto city: citiesC_){
+        oldFlowMap.insert({city.first, city.second->getFlow()});
+    }
+    for(auto p: vector){
 
-void DataManip::testFindEdge(string code,string code1){
-    Edge *e=graph_.findEdge(code,code1);
-    cout << e->getCapacity() << " " << e->getOrig()->getCode() << " " << e->getDest()->getCode();
+        Edge* edge =graph_.findEdge(p.first,p.second);
+        if(edge!= nullptr) {
+            oldCapacity.insert({edge, edge->getCapacity()});
+            edge->setCapacity(0);
+        }
 
-    //e->getFlow() 0 ???? onde se muda isto??
+        Edge* edge1 =graph_.findEdge(p.second,p.first);
+        if(edge1!= nullptr) {
+
+            oldCapacity.insert({edge1, edge1->getCapacity()});
+            edge1->setCapacity(0);
+        }
+    }
+
+    maxFlowEdmonds();
+
+    bool affected= false;
+    for (auto city: citiesC_){
+
+        int oldFlowC = oldFlowMap[city.first];
+        int newFlowC = city.second->getFlow();
+
+        if ( oldFlowC > newFlowC){
+            affected = true;
+            cout << city.first << "(" << city.second->getName() << "): " << newFlowC << "/" << oldFlowC << " (new flow/old flow)" << endl << endl;
+            city.second->setFlow(oldFlowC);
+        }
+    }
+
+    if (!affected){
+        cout << "No cities affected." << endl << endl;
+    }
+
+    for(auto e: oldCapacity){
+        e.first->setCapacity(e.second);
+    }
+
 }
+

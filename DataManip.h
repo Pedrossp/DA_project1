@@ -59,14 +59,14 @@ public:
 
     string verifyReservoirCode(string reservoirNameOrCode);
     void reservoirOutOfCommission(string codeOrName);
-
     void stationRemoved(string code);
+    void pipelineRemoved(vector<pair<string, string>>);
 
 
     //Auxiliar
     void citiesFlow();
 
-    void testFindEdge(string code,string code1);
+
 
 };
 

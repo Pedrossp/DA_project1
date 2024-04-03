@@ -187,6 +187,7 @@ void Edge::setCapacity(unsigned int capacity_) {
 }
 
 Edge* Graph::findEdge(string codeOrigin,string codeDest){
+
     for (auto v : vertexSet){
         for(auto e : v.second->getAdj()){
             if(e->getOrig()->getCode() == codeOrigin && e->getDest()->getCode() == codeDest){
@@ -194,5 +195,5 @@ Edge* Graph::findEdge(string codeOrigin,string codeDest){
             }
         }
     }
-
+    return nullptr;
 }
