@@ -674,4 +674,7 @@ void DataManip::stationRemoved(string code) { //3.2
 }
 
 
-
+void DataManip::testFindEdge(string code,string code1){
+    Edge *e=graph_.findEdge(code,code1);
+    cout << e->getCapacity() << " " << e->getOrig()->getCode() << " " << e->getDest()->getCode();
+}

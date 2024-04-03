@@ -66,6 +66,8 @@ public:
     //Auxiliar
     void citiesFlow();
 
+    void testFindEdge(string code,string code1);
+
 };
 
 
