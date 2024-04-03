@@ -57,6 +57,15 @@ public:
     void getAverageDifference();
     void BalanceFlow();
 
+    string verifyReservoirCode(string reservoirNameOrCode);
+    void reservoirOutOfCommission(string codeOrName);
+
+    void stationOutOfCommission(string code);
+
+
+    //Auxiliar
+    void citiesFlow();
+
 };
 
 

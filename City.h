@@ -13,6 +13,7 @@ private:
     string population_;
     unsigned int id_;
     double demand_;
+    int flow_;
 
 public:
     City(string& name, string& code, unsigned int id, string population, double demand);
@@ -22,12 +23,14 @@ public:
     string getPopulation();
     unsigned int getId();
     double getDemand();
+    int getFlow();
 
     void setName(string& name);
     void setCode(string& code);
     void setPopulation(string& population);
     void setId(unsigned int id);
     void setDemand(double demand);
+    void setFlow(int flow);
 };
 
 

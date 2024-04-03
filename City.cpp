@@ -10,6 +10,8 @@ double City::getDemand() {return demand_;}
 
 unsigned int City::getId() {return id_;}
 
+int City::getFlow() {return flow_;}
+
 void City::setCode(std::string &code) { code_ = code;}
 
 void City::setDemand(double demand) { demand_ = demand;}
@@ -26,4 +28,8 @@ City::City(string &name, string &code, unsigned int id, string population, doubl
     id_ = id;
     population_ = population;
     demand_ = demand;
+}
+
+void City::setFlow(int flow) {
+    flow_ = flow;
 }

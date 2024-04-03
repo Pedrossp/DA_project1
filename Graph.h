@@ -76,6 +76,7 @@ public:
     unsigned int getFlow();
 
     void setFlow(unsigned int flow_);
+    void setCapacity(unsigned int capacity_);
 
 };
 

@@ -180,3 +180,7 @@ unsigned int Edge::getFlow() {
 void Edge::setFlow(unsigned int flow_) {
     flow = flow_;
 }
+
+void Edge::setCapacity(unsigned int capacity_) {
+    capacity = capacity_;
+}

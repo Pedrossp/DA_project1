@@ -2,23 +2,25 @@
 #include "iostream"
 #include "Menu.h"
 
+void funcOla(string basicString);
+
 using namespace std;
 
 int main(){
     DataManip data;
-    /*
+
     //Smal data set
     data.readStations();
     data.readReservoirs();
     data.readCities();
     data.readPipes();
-     */
+
 
     //Large data set
-    data.readStationsL();
-    data.readReservoirsL();
-    data.readCitiesL();
-    data.readPipesL();
+    //data.readStationsL();
+    //data.readReservoirsL();
+    //data.readCitiesL();
+    //data.readPipesL();
 
     //Menu menu = Menu(data);
     //menu.MainMenu();
@@ -64,10 +66,10 @@ int main(){
     }*/
 
     //data.maxFLowTotalCity(0,"");
-    data.maxFlowEdmonds();
-    data.getAverageDifference();
+    //data.maxFlowEdmonds();
+    //data.getAverageDifference();
    //data.getDeficit();
-    for(auto x: data.getReservoirs()){
+    /*for(auto x: data.getReservoirs()){
         int sum=0;
         for(auto y:data.getGraph().getVertexSet()[x.first]->getAdj()){
             sum+=y->getFlow();
@@ -86,7 +88,10 @@ int main(){
         cout << "capacidade: "<< x.second->getMaxDelivery()<<endl<< endl;
     }
     data.getAverageDifference();
-    //data.getDeficit();
+    //data.getDeficit();*/
+
+    //data.reservoirOutOfCommission("Ribeiro Frio");
+    data.stationOutOfCommission("PS_1");
     return 0;
 
 }

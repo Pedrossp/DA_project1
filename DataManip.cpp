@@ -290,17 +290,18 @@ Graph DataManip::getGraph() {
 //Edmonds
 string DataManip::verifyCityCode(string cityNameOrCode) {
 
-    City *city = citiesC_[cityNameOrCode];
-    string cityCode;
+    string cityCode = "";
 
-    if (city == nullptr){
-        cityCode = citiesN_[cityNameOrCode]->getCode();
-    }
-    else{
-        cityCode = city->getCode();
+    for (auto city: citiesC_){
+        if (city.second->getName() == cityNameOrCode){
+            cityCode = city.first;
+            return cityCode;
+        }
     }
 
-    return cityCode;
+    if (cityCode == ""){
+        return cityNameOrCode;
+    }
 }
 
 void DataManip::normalizeGraph() {    //esta a mudar no grafo original
@@ -309,12 +310,11 @@ void DataManip::normalizeGraph() {    //esta a mudar no grafo original
     graph_.addVertex(-1, "SSK"); //super sink
 
     for (auto reser: getReservoirs()){
-
-        graph_.addEdge("SS",reser.second->getCode(), reser.second->getMaxDelivery());
+        graph_.addEdge("SS",reser.first, reser.second->getMaxDelivery());
     }
 
     for (auto city: getCitiesC()){
-        graph_.addEdge(city.second->getCode(),"SSK", city.second->getDemand());    //city.second->getDemand()
+        graph_.addEdge(city.first,"SSK", city.second->getDemand());
     }
 }
 
@@ -411,12 +411,8 @@ void DataManip::maxFlowEdmonds() {
         augmentFlowAlongPath(s, t, f);
     }
 
+    citiesFlow();
 
-    // provisorio
-    int soma = 0;
-    for (auto edg: graph_.getVertexSet()["SSK"]->getIncoming()){
-        soma += edg->getFlow();
-    }
     graph_.removeVertex("SS");
     graph_.removeVertex("SSK");
 }
@@ -459,12 +455,15 @@ void DataManip::getDeficit() {
     maxFlowEdmonds();
     cout << "The deficit of water per city:" << endl << endl;
 
-    for (auto edg: graph_.getVertexSet()["SSK"]->getIncoming()) {
+    for (auto city: citiesC_) {
 
-        string cityCode = edg->getOrig()->getCode();
-        int deficit = citiesC_[cityCode]->getDemand() - edg->getFlow();
+        int demand = city.second->getDemand();
+        int flow = city.second->getFlow();
+        int deficit = demand - flow;
+
         if (deficit > 0){
-            cout << cityCode << "(" << citiesC_[cityCode]->getName() << "): " << deficit << " m³/sec" << endl;
+            cout << city.first << "(" << city.second->getName() << "): " << deficit << " m³/sec" << endl
+                 << "  (Demand: " << demand << ", Actual flow: " << flow << ")" << endl << endl;
         }
     }
 }
@@ -550,4 +549,129 @@ void DataManip::BalanceFlow() { // valores do fluxo podem aumentar 1 ou 2 em alg
         }
     }
 }
+
+void DataManip::citiesFlow() {
+
+    for (auto city: citiesC_){
+        int sumC = 0;
+        for (auto edge: graph_.getVertexSet()[city.first]->getIncoming()){
+            sumC += edge->getFlow();
+        }
+        city.second->setFlow(sumC);
+    }
+}
+
+string DataManip::verifyReservoirCode(string reservoirNameOrCode) {
+
+    string reserCode = "";
+
+    for (auto reser: reservoirs_){
+        if (reser.second->getName() == reservoirNameOrCode){
+            reserCode = reser.first;
+            return reserCode;
+        }
+    }
+
+    if (reserCode == ""){
+        return reservoirNameOrCode;
+    }
+}
+
+void DataManip::reservoirOutOfCommission(string codeOrName) {
+
+    maxFlowEdmonds();
+    map<string, int>  oldFlowMap;
+
+    for (auto city: citiesC_){
+        oldFlowMap.insert({city.first, city.second->getFlow()});
+    }
+
+    string code = verifyReservoirCode(codeOrName);
+    unsigned int oldDelivery = reservoirs_[code]->getMaxDelivery();
+
+    reservoirs_[code]->setMaxDelivery(0);
+
+    maxFlowEdmonds();
+
+    cout << "Affected cities by the removal of " << codeOrName << ": " << endl << endl;
+    bool affected = false;
+
+    for (auto city: citiesC_){
+
+        int oldFlowC = oldFlowMap[city.first];
+        int newFlowC = city.second->getFlow();
+
+        if ( oldFlowC > newFlowC){
+            affected = true;
+            cout << city.first << "(" << city.second->getName() << "): " << newFlowC << "/" << oldFlowC << " (new flow/old flow)" << endl << endl;
+            city.second->setFlow(oldFlowC);
+        }
+    }
+
+    if (!affected){
+        cout << "No cities affected." << endl << endl;
+    }
+
+    reservoirs_[code]->setMaxDelivery(oldDelivery);
+
+}
+
+void DataManip::stationOutOfCommission(string code) {
+
+    maxFlowEdmonds();
+    map<string, int>  oldFlowMap;
+
+    for (auto city: citiesC_){
+        oldFlowMap.insert({city.first, city.second->getFlow()});
+    }
+
+    Vertex *vert = graph_.findVertex(code);
+    map<Edge*, int> inMap;
+    map<Edge*, int> outMap;
+
+    for ( auto in: vert->getIncoming()){
+        inMap.insert({in, in->getCapacity()});
+        in->setCapacity(0);
+    }
+
+    for ( auto out: vert->getAdj()){
+        outMap.insert({out, out->getCapacity()});
+        out->setCapacity(0);
+    }
+
+    maxFlowEdmonds();
+
+    cout << "Affected city by the removal of " << code << ": " << endl << endl;
+    bool affected = false;
+
+    for (auto city: citiesC_){
+
+        int oldFlowC = oldFlowMap[city.first];
+        int newFlowC = city.second->getFlow();
+
+        if ( oldFlowC > newFlowC){
+            affected = true;
+            cout << city.first << "(" << city.second->getName() << "): " << newFlowC << "/" << oldFlowC << " (new flow/old flow)" << endl << endl;
+            city.second->setFlow(oldFlowC);
+        }
+    }
+
+    if (!affected){
+        cout << "No cities affected." << endl << endl;
+    }
+
+
+    for (auto inEdge: inMap){
+        Edge* edge = inEdge.first;
+        edge->setCapacity(inEdge.second);
+    }
+
+    for (auto outEdge: outMap){
+        Edge* edge = outEdge.first;
+        edge->setCapacity(outEdge.second);
+    }
+
+}
+
+
 
