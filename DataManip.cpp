@@ -578,23 +578,37 @@ string DataManip::verifyReservoirCode(string reservoirNameOrCode) {
     }
 }
 
-void DataManip::reservoirOutOfCommission(string codeOrName) {
+void DataManip::reservoirOutOfCommission(vector<string> vec) { //3.1
 
     maxFlowEdmonds();
     map<string, int>  oldFlowMap;
+    map<Reservoir*,unsigned int > oldMaxDelivery;
 
     for (auto city: citiesC_){
         oldFlowMap.insert({city.first, city.second->getFlow()});
     }
 
-    string code = verifyReservoirCode(codeOrName);
-    unsigned int oldDelivery = reservoirs_[code]->getMaxDelivery();
+    for(auto codeOrName : vec ) {
+        string code = verifyReservoirCode(codeOrName);
+        unsigned int oldDelivery = reservoirs_[code]->getMaxDelivery();
+        oldMaxDelivery.insert({reservoirs_[code],oldDelivery});
+        reservoirs_[code]->setMaxDelivery(0);
+    }
 
-    reservoirs_[code]->setMaxDelivery(0);
 
     maxFlowEdmonds();
 
-    cout << "Affected cities by the removal of " << codeOrName << ": " << endl << endl;
+    cout << "Affected cities by the removal of ";
+
+    auto it = vec.begin();
+    for(auto codeOrName : vec){
+        cout << codeOrName;
+        if(++it != vec.end() ){
+            cout << ", ";
+        }
+    }
+
+    cout << ": " << endl << endl;
     bool affected = false;
 
     for (auto city: citiesC_){
@@ -604,7 +618,7 @@ void DataManip::reservoirOutOfCommission(string codeOrName) {
 
         if ( oldFlowC > newFlowC){
             affected = true;
-            cout << city.first << "(" << city.second->getName() << "): " << newFlowC << "/" << oldFlowC << " (new flow/old flow)" << endl << endl;
+            cout << city.first << "(" << city.second->getName() << "): " << newFlowC << "/" << oldFlowC << " (new flow/old flow)" << endl;
             city.second->setFlow(oldFlowC);
         }
     }
@@ -613,11 +627,13 @@ void DataManip::reservoirOutOfCommission(string codeOrName) {
         cout << "No cities affected." << endl << endl;
     }
 
-    reservoirs_[code]->setMaxDelivery(oldDelivery);
-
+    for (auto  r : oldMaxDelivery){
+        r.first->setMaxDelivery(r.second);
+    }
+    cout<<endl<<endl;
 }
 
-void DataManip::stationOutOfCommission(vector<string> sCodes) {
+void DataManip::stationRemoved(vector<string> sCodes) {
 
     maxFlowEdmonds();
     map<string, int>  oldFlowMap;
@@ -645,7 +661,7 @@ void DataManip::stationOutOfCommission(vector<string> sCodes) {
 
     maxFlowEdmonds();
 
-    cout << "Affected city by the removal of ";
+    cout << "Affected cities by the removal of ";
     int sCount = sCodes.size();
     int i = 0;
 
@@ -685,5 +701,51 @@ void DataManip::stationOutOfCommission(vector<string> sCodes) {
     cout << endl << endl;
 }
 
+void DataManip::pipelineRemoved(vector<pair<string, string>> vector) {
+    maxFlowEdmonds();
+    map<string, int>  oldFlowMap;
+    map<Edge*,int > oldCapacity;
+    for (auto city: citiesC_){
+        oldFlowMap.insert({city.first, city.second->getFlow()});
+    }
+    for(auto p: vector){
 
+        Edge* edge =graph_.findEdge(p.first,p.second);
+        if(edge!= nullptr) {
+            oldCapacity.insert({edge, edge->getCapacity()});
+            edge->setCapacity(0);
+        }
+
+        Edge* edge1 =graph_.findEdge(p.second,p.first);
+        if(edge1!= nullptr) {
+
+            oldCapacity.insert({edge1, edge1->getCapacity()});
+            edge1->setCapacity(0);
+        }
+    }
+
+    maxFlowEdmonds();
+
+    bool affected= false;
+    for (auto city: citiesC_){
+
+        int oldFlowC = oldFlowMap[city.first];
+        int newFlowC = city.second->getFlow();
+
+        if ( oldFlowC > newFlowC){
+            affected = true;
+            cout << city.first << "(" << city.second->getName() << "): " << newFlowC << "/" << oldFlowC << " (new flow/old flow)" << endl << endl;
+            city.second->setFlow(oldFlowC);
+        }
+    }
+
+    if (!affected){
+        cout << "No cities affected." << endl << endl;
+    }
+
+    for(auto e: oldCapacity){
+        e.first->setCapacity(e.second);
+    }
+
+}
 

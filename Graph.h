@@ -59,6 +59,8 @@ public:
 
     bool removeVertex(string code);
 
+    Edge* findEdge(string codeOrigin,string codeDest);
+
 };
 
 class Edge{

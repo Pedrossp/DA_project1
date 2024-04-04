@@ -58,13 +58,15 @@ public:
     void BalanceFlow();
 
     string verifyReservoirCode(string reservoirNameOrCode);
-    void reservoirOutOfCommission(string codeOrName);
 
-    void stationOutOfCommission(vector<string> sCodes);
-
+    void stationRemoved(vector<string> sCodes);
+    void reservoirOutOfCommission(vector<string> codeOrName);
+    void pipelineRemoved(vector<pair<string, string>> p );
 
     //Auxiliar
     void citiesFlow();
+
+
 
 };
 

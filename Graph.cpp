@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Graph.h"
 
 //Vertex
@@ -183,4 +184,16 @@ void Edge::setFlow(unsigned int flow_) {
 
 void Edge::setCapacity(unsigned int capacity_) {
     capacity = capacity_;
+}
+
+Edge* Graph::findEdge(string codeOrigin,string codeDest){
+
+    for (auto v : vertexSet){
+        for(auto e : v.second->getAdj()){
+            if(e->getOrig()->getCode() == codeOrigin && e->getDest()->getCode() == codeDest){
+                return e;
+            }
+        }
+    }
+    return nullptr;
 }
