@@ -58,9 +58,9 @@ public:
     void BalanceFlow();
 
     string verifyReservoirCode(string reservoirNameOrCode);
-    void reservoirOutOfCommission(string codeOrName);
+    void reservoirOutOfCommission(vector<string> codeOrName);
     void stationRemoved(string code);
-    void pipelineRemoved(vector<pair<string, string>>);
+    void pipelineRemoved(vector<pair<string, string>> p );
 
 
     //Auxiliar

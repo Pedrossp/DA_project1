@@ -65,8 +65,8 @@ int main(){
         }
     }*/
 
-    //data.maxFLowTotalCity(0,"");
-    data.maxFlowEdmonds();
+    data.maxFLowTotalCity(0,"");
+    //data.maxFlowEdmonds();
     //data.getAverageDifference();
    //data.getDeficit();
     /*for(auto x: data.getReservoirs()){
@@ -89,12 +89,15 @@ int main(){
     }
     data.getAverageDifference();
     //data.getDeficit();*/
-    vector <pair <string,string>> a;
-    a.push_back({"PS_9","PS_10"});
-    a.push_back({"PS_4","PS_5"});
-    data.pipelineRemoved(a);
-    //data.reservoirOutOfCommission("Ribeiro Frio");
+    vector <string> a;
+    //a.push_back({"PS_9","PS_10"});
+    //a.push_back({"PS_4","PS_5"});
+    //data.pipelineRemoved(a);
+    a.push_back({"Ribeiro Frio"});
+    a.push_back({"R_3"});
+    data.reservoirOutOfCommission(a);
     //data.stationRemoved("PS_1");
+    data.maxFLowTotalCity(0,"");
 
     return 0;
 
