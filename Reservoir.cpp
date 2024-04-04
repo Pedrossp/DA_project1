@@ -1,7 +1,3 @@
-//
-// Created by edu on 18-03-2024.
-//
-
 #include "Reservoir.h"
 
 Reservoir::Reservoir(string &name, string &municipality, unsigned int id, string &code, unsigned int maxDelivery) {

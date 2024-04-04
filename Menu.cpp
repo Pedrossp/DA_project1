@@ -433,5 +433,6 @@ void Menu::back() const {
 
 void Menu::exitProgram() const {
     cout << endl << "Exiting program..." << endl;
+    this_thread::sleep_for(chrono::seconds(2));
     exit(0);
 }

@@ -38,9 +38,9 @@ void DataManip::readCities() {
 
 
             City *city = new City(name, code, id,population, demand);
-            citiesC_.insert({code,city}); //adicionar ao map de cities pelo codigo
-            citiesN_.insert({name, city}); //adicionar ao map de cities pelo nome
-            graph_.addVertex(id,code); //meter no grafo
+            citiesC_.insert({code,city});
+            citiesN_.insert({name, city});
+            graph_.addVertex(id,code);
 
         }
 
@@ -71,8 +71,8 @@ void DataManip::readStations() {
 
 
             Station *station = new Station(id,code);
-            stations_.insert({code,station}); //adicionar ao map de stations
-            graph_.addVertex(id,code); //meter no grafo
+            stations_.insert({code,station});
+            graph_.addVertex(id,code);
         }
 
     } else
@@ -162,12 +162,11 @@ void DataManip::readCitiesL() {
             iss.ignore();
             iss >> population;
 
-            //cout << name << " " << id << " " << code << " " << demand << " " << population << endl;
 
             City *city = new City(name, code, id,population, demand);
-            citiesC_.insert({code,city}); //adicionar ao map de cities pelo codigo
-            citiesN_.insert({name, city}); //adicionar ao map de cities pelo nome
-            graph_.addVertex(id,code); //meter no grafo
+            citiesC_.insert({code,city});
+            citiesN_.insert({name, city});
+            graph_.addVertex(id,code);
 
         }
 
@@ -193,11 +192,10 @@ void DataManip::readStationsL() {
             iss.ignore();
             iss >> code;
 
-            //cout << id << " " << code << endl;
 
             Station *station = new Station(id,code);
-            stations_.insert({code,station}); //adicionar ao map de stations
-            graph_.addVertex(id,code); //meter no grafo
+            stations_.insert({code,station});
+            graph_.addVertex(id,code);
         }
 
     } else
@@ -224,8 +222,6 @@ void DataManip::readReservoirsL() {
             iss.ignore();
             getline(iss, code, ',');
             iss>>maxDelivery;
-
-            //cout << reservoir << " " << municipality << " " <<id << " " << code << " " <<maxDelivery << endl;
 
             Reservoir *r = new Reservoir(reservoir,municipality,id,code,maxDelivery);
             reservoirs_.insert({code,r});
@@ -304,7 +300,7 @@ string DataManip::verifyCityCode(string cityNameOrCode) {
     }
 }
 
-void DataManip::normalizeGraph() {    //esta a mudar no grafo original
+void DataManip::normalizeGraph() {
 
     graph_.addVertex(0, "SS"); // super source
     graph_.addVertex(-1, "SSK"); //super sink
@@ -321,7 +317,7 @@ void DataManip::normalizeGraph() {    //esta a mudar no grafo original
 void DataManip::testAndVisit(queue<Vertex *> &q, Edge *e, Vertex *w, double residual) {
 
     if (! w->isVisited() && residual > 0) {
-// Mark 'w' as visited, set the path through which it was reached, and enqueue it
+
         w->setVisited(true);
         w->setPath(e);
         q.push(w);
@@ -396,7 +392,7 @@ void DataManip::maxFlowEdmonds() {
     Vertex* s = graph_.findVertex("SS");
     Vertex* t = graph_.findVertex("SSK");
 
-    if (s == nullptr || t == nullptr || s == t) {        // verificar se é preciso msm
+    if (s == nullptr || t == nullptr || s == t) {
         throw std::logic_error("Invalid source and/or target vertex");
     }
 
