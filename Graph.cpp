@@ -3,10 +3,10 @@
 
 //Vertex
 
-void Vertex::addEdge(Vertex *dest, unsigned int capacity) {       //*****************************************************************
+void Vertex::addEdge(Vertex *dest, unsigned int capacity) {
     auto newEdge = new Edge(this, dest,capacity);
-    adj.push_back(newEdge);     // new
-    dest->incoming.push_back(newEdge);       //adicionei isto
+    adj.push_back(newEdge);
+    dest->incoming.push_back(newEdge);
 }
 
 //constructor
