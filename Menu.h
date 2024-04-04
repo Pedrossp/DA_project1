@@ -15,6 +15,8 @@ public:
     void MainMenu();
 
     void maxWater();
+    void deficitPerCity();
+    void balanceFlow();
 
     void otherInfo();
 

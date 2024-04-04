@@ -13,9 +13,11 @@ void Menu::MainMenu() {
                  << "│             Main Menu             │" << endl
                  << "├───────────────────────────────────┤" << endl
                  << "│  1 - Get Max Amount of Water      │" << endl
-                 << "│  2 - Get Statistics               │" << endl
-                 << "│  3 - Airport Info                 │" << endl
-                 << "│  4 - Other Info                   │" << endl
+                 << "│  2 - Deficit per City             │" << endl
+                 << "│  3 - Balance Flow                 │" << endl
+                 << "│  4 - Reservoirs Out of Comission  │" << endl
+                 << "│  5 - Pumping Station Removed      │" << endl
+                 << "│  6 - Pipeline Rupture             │" << endl
                  << "│  e - Exit                         │" << endl
                  << "└───────────────────────────────────┘" << endl
                  << endl
@@ -30,14 +32,23 @@ void Menu::MainMenu() {
                 maxWater();
                 return MainMenu();
             case ('2'):
-                //getStatistics();
+                deficitPerCity();
                 return MainMenu();
             case ('3'):
-                //apInfo();
+                balanceFlow();
                 return MainMenu();
             case ('4'):
                 otherInfo();
                 return MainMenu();
+
+            case ('5'):
+                otherInfo();
+                return MainMenu();
+
+            case ('6'):
+                otherInfo();
+                return MainMenu();
+
             case ('e'):
                 return exitProgram();
 
@@ -56,8 +67,6 @@ void Menu::maxWater() {
          << "├────────────────────────────────────┤" << endl
          << "│  1 - From all Cities               │" << endl
          << "│  2 - By a Specific City            │" << endl
-         << "│  3 - By Coordinates                │" << endl
-         << "│  4 - By Coordinates & Radius       │" << endl
          << "│  b - Go Back                       │" << endl
          << "│  e - Exit                          │" << endl
          << "└────────────────────────────────────┘" << endl
@@ -89,18 +98,7 @@ void Menu::maxWater() {
                 data_.maxFLowTotalCity(1, inputOrigin);
                 flag = 0;
                 break;
-            case ('3'):
-                cout << endl << "Insert origin coordinates: [Format: x.(...),y.(...)]" << endl;
-                cin >> inputOrigin;
-                flag = 0;
-                break;
-            case ('4'):
-                cout << endl << "Insert origin coordinates: [Format: x.(...),y.(...)]" << endl;
-                cin >> inputOrigin;
-                cout << endl << "Insert radius: " << endl;
-                cin >> inputRadiusO;
-                flag = 0;
-                break;
+
             case ('b'):
                 return;
             case ('e'):
@@ -208,18 +206,15 @@ void Menu::maxWater() {
     return MainMenu();
 }
 
+*/
 
-
-void Menu::getStatistics() {
+void Menu::deficitPerCity() {
     char option1;
     cout << endl << endl;
     cout << "┌────────────────────────────────────┐" << endl
-         << "│           Get Statistics           │" << endl
+         << "│          Deficit per City          │" << endl
          << "├────────────────────────────────────┤" << endl
-         << "│  1 - Global                        │" << endl
-         << "│  2 - Airport                       │" << endl
-         << "│  3 - Airline                       │" << endl
-         << "│  4 - City                          │" << endl
+         << "│  1 - From all cities               │" << endl
          << "│  b - Go Back                       │" << endl
          << "│  e - Exit                          │" << endl
          << "└────────────────────────────────────┘" << endl
@@ -232,17 +227,8 @@ void Menu::getStatistics() {
 
         switch(option1) {
             case ('1'):
-                globalStatistics();
-                return getStatistics();
-            case ('2'):
-                airportStatistics();
-                return getStatistics();
-            case ('3'):
-                airlineStatistics();
-                return getStatistics();
-            case ('4'):
-                cityStatistics();
-                return getStatistics();
+                data_.getDeficit();
+                return deficitPerCity();
             case ('b'):
                 return MainMenu();
             case ('e'):
@@ -254,7 +240,7 @@ void Menu::getStatistics() {
     }
 }
 
-
+/*
 void Menu::globalStatistics() {
     char option;
     cout << endl << endl;
@@ -301,209 +287,17 @@ void Menu::globalStatistics() {
 
 
 
-void Menu::airportStatistics() {
-    char option1;
-    string ap_code;
-    cout << "┌────────────────────────────────────┐" << endl
-         << "│         Airport Statistics         │" << endl
-         << "└────────────────────────────────────┘" << endl
-         << endl;
-
-    cout << "Please insert the airport code: " << endl;
-    cin >> ap_code;
+*/
 
 
-    if (data_.getAirports().find(ap_code) == data_.getAirports().end()){
-        cout << "\nNot a valid airport...\nTry again!\n\n";
-        airportStatistics();
-    }
-
-
-    cout << endl << "Choose the statistic:" << endl;
-    cout << "┌────────────────────────────────────┐" << endl
-         << "│  1 - Total Flights                 │" << endl
-         << "│  2 - Total Airlines                │" << endl
-         << "│  3 - Total Directed Cities         │" << endl
-         << "│  4 - Total Directed Countries      │" << endl
-         << "│  5 - Total Directed Airports       │" << endl
-         << "│  6 - Total Reachable Cities        │" << endl
-         << "│  7 - Total Reachable Countries     │" << endl
-         << "│  8 - Total Reachable Airports      │" << endl
-         << "│  b - Go Back                       │" << endl
-         << "│  e - Exit                          │" << endl
-         << "└────────────────────────────────────┘" << endl
-         << endl;
-
-    while(true) {
-        cout << "Choose an option: ";
-        cin >> option1;
-
-        switch (option1) {
-            case ('1'):
-                cout << "Number of flights: " << data_.nrFlightsOutOfAirport(ap_code) << endl;
-                back();
-                return getStatistics();
-            case ('2'):
-                cout << "Number of airlines: " << data_.nrAirlinesOutOfAirport(ap_code) << endl;
-                back();
-                return getStatistics();
-            case ('3'):
-                cout << "Number of directed cities: " << data_.nrDirectCitiesFromAirport(ap_code) << endl;
-                back();
-                return getStatistics();
-            case ('4'):
-                cout << "Number of directed countries: " << data_.nrDirectCountriesFromAirport(ap_code) << endl;
-                back();
-                return getStatistics();
-            case ('5'):
-                cout << "Number of directed airports: " << data_.nrDirectAirportsFromAirport(ap_code) << endl;
-                back();
-                return getStatistics();
-            case ('6'):
-                cout << "Number of reachable cities: " << data_.nrReachableCitiesFromAirport(ap_code) << endl;
-                back();
-                return getStatistics();
-            case ('7'):
-                cout << "Number of reachable countries: " << data_.nrReachableCountriesFromAirport(ap_code) << endl;
-                back();
-                return getStatistics();
-            case ('8'):
-                cout << "Number of reachable airports: " << data_.nrReachableAirportsFromAirport(ap_code) << endl;
-                back();
-                return getStatistics();
-            case ('b'):
-                return;
-            case ('e'):
-                return exitProgram();
-
-            default:
-                cout << endl << "Not a valid option!" << endl;
-        }
-    }
-}
-
-
-
-void Menu::airlineStatistics() {
-    char option1;
-    string al_code;
-    cout << "┌────────────────────────────────────┐" << endl
-         << "│         Airline Statistics         │" << endl
-         << "└────────────────────────────────────┘" << endl
-         << endl;
-
-    cout << "Please insert the airline code: " << endl;
-    cin >> al_code;
-
-
-    if (data_.getAirlines().find(al_code) == data_.getAirlines().end()){
-        cout << "\nNot a valid airline...\nTry again!\n\n";
-        airlineStatistics();
-    }
-
-
-    cout << endl << "Choose the statistic:" << endl;
-    cout << "┌────────────────────────────────────┐" << endl
-         << "│  1 - Total Flights                 │" << endl
-         << "│  b - Go Back                       │" << endl
-         << "│  e - Exit                          │" << endl
-         << "└────────────────────────────────────┘" << endl
-         << endl;
-
-    while(true) {
-        cout << "Choose an option:";
-        cin >> option1;
-
-        switch (option1) {
-            case ('1'):
-                cout << "Number of flights: " << data_.nrFlightsPerAirline(al_code) << endl;
-                back();
-                return getStatistics();
-            case ('b'):
-                return;
-            case ('e'):
-                return exitProgram();
-
-            default:
-                cout << endl << "Not a valid option!" << endl;
-        }
-    }
-}
-
-
-
-void Menu::cityStatistics() {
-    char input;
-    string ci_name;
-    string cou_name;
-    cout << "┌────────────────────────────────────┐" << endl
-         << "│          City Statistics           │" << endl
-         << "└────────────────────────────────────┘" << endl
-         << endl;
-
-    cout << "Please insert the name of the city: (Format: <city>,<country> because of repeated city names) " << endl;
-
-    getline(cin >> ws, ci_name);
-    if (data_.getCities().find(ci_name) == data_.getCities().end()){
-        cout << "\nNot a valid city...\nTry again!\n\n";
-        cityStatistics();
-    }
-
-
-    cout << endl << "Choose the statistic:" << endl;
-    cout << "┌────────────────────────────────────┐" << endl
-         << "│  1 - Total Flights                 │" << endl
-         << "│  2 - Total Directed Cities         │" << endl
-         << "│  3 - Total Directed Countries      │" << endl
-         << "│  4 - Total Directed Airports       │" << endl
-         << "│  b - Go Back                       │" << endl
-         << "│  e - Exit                          │" << endl
-         << "└────────────────────────────────────┘" << endl
-         << endl;
-
-    while(true) {
-        cout << "Choose an option: ";
-        cin >> input;
-
-        switch (input) {
-            case ('1'):
-                cout << "Number of flights: " << data_.nrFlightsPerCity(ci_name, cou_name) << endl;
-                back();
-                return getStatistics();
-            case ('2'):
-                cout << "Number of directed cities: " << data_.nrDirectCitiesFromCity(ci_name) << endl;
-                back();
-                return getStatistics();
-            case ('3'):
-                cout << "Number of directed countries: " << data_.nrDirectCountriesFromCity(ci_name) << endl;
-                back();
-                return getStatistics();
-            case ('4'):
-                cout << "Number of directed airports: " << data_.nrDirectAirportsFromCity(ci_name) << endl;
-                back();
-                return getStatistics();
-            case ('b'):
-                return;
-            case ('e'):
-                return exitProgram();
-
-            default:
-                cout << endl << "Not a valid option!" << endl;
-        }
-    }
-}
-
-
-
-
-void Menu::apInfo() {
+void Menu::balanceFlow() {
     char ip;
-    string ap;
-    int max;
+    //string ap;
+
     cout << "┌─────────────────────────────────────────────────────────────────┐" << endl
-         << "│                          Airport Info                           │" << endl
+         << "│                          Balance Flow                           │" << endl
          << "├─────────────────────────────────────────────────────────────────┤" << endl
-         << "│  1 - Number of reachable airports with maximum of X flights     │" << endl
+         << "│  1 - Balance Flow of Water across Network                       │" << endl
          << "│  b - Go Back                                                    │" << endl
          << "│  e - Exit                                                       │" << endl
          << "└─────────────────────────────────────────────────────────────────┘" << endl
@@ -516,19 +310,20 @@ void Menu::apInfo() {
 
         switch (ip) {
             case ('1'):
-                cout << "Please insert the origin airport code: " << endl;
-                cin >> ap;
+                //cout << "Please insert the origin airport code: " << endl;
+                //cin >> ap;
 
-                if (data_.getAirports().find(ap) == data_.getAirports().end()){
-                    cout << "\nNot a valid airport...\nTry again!\n\n";
-                    apInfo();
-                }
+                //if (data_.getAirports().find(ap) == data_.getAirports().end()){
+                //    cout << "\nNot a valid airport...\nTry again!\n\n";
+                //    balanceFlow();
+                //}
 
-                cout << "Insert the maximum number of stops: " << endl;
-                cin >> max;
-                data_.MaximumXDistance(ap, max);
+
+                data_.getAverageDifference();
+                data_.BalanceFlow();
+                data_.getAverageDifference();
                 back();
-                return apInfo();
+                return balanceFlow();
             case ('b'):
                 return;
 
@@ -542,7 +337,7 @@ void Menu::apInfo() {
 }
 
 
-*/
+
 void Menu::otherInfo() {
     char option;
     int k;
