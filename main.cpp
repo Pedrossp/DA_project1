@@ -91,7 +91,13 @@ int main(){
     //data.getDeficit();*/
 
     //data.reservoirOutOfCommission("Ribeiro Frio");
-    data.stationOutOfCommission("PS_1");
+    data.maxFLowTotalCity(0,"");
+    vector<string> codes;
+    codes.push_back("PS_1");
+    codes.push_back("PS_2");
+    data.stationOutOfCommission(codes);
+
+    data.maxFLowTotalCity(0,"");
     return 0;
 
 }

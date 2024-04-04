@@ -60,7 +60,7 @@ public:
     string verifyReservoirCode(string reservoirNameOrCode);
     void reservoirOutOfCommission(string codeOrName);
 
-    void stationOutOfCommission(string code);
+    void stationOutOfCommission(vector<string> sCodes);
 
 
     //Auxiliar
