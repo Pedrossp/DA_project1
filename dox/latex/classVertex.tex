@@ -1,0 +1,278 @@
+\hypertarget{classVertex}{}\doxysection{Vertex Class Reference}
+\label{classVertex}\index{Vertex@{Vertex}}
+
+
+Represents a vertex in the graph.  
+
+
+
+
+{\ttfamily \#include $<$Graph.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVertex_a5beff418cf24dd55a53baa72bb7ceb2f}{Vertex}} (unsigned int id, string code)
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classVertex}{Vertex}} class. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \& \mbox{\hyperlink{classVertex_ae201ccd5215730e9ca67a146ebadbd8f}{get\+Adj}} ()
+\begin{DoxyCompactList}\small\item\em Get the outgoing edges from the vertex. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \& \mbox{\hyperlink{classVertex_ae576f526bfece5683e10ca35911c1d25}{get\+Incoming}} ()
+\begin{DoxyCompactList}\small\item\em Get the incoming edges to the vertex. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{classVertex_a762c560f2bea4182da7d597b84274d94}{get\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Get the identifier of the vertex. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classVertex_a569d9889aa2bb893b65fb58343b76bd9}{get\+Code}} ()
+\begin{DoxyCompactList}\small\item\em Get the code associated with the vertex. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEdge}{Edge}} $\ast$ \mbox{\hyperlink{classVertex_a3e195827157be186407ce895fb86e43b}{get\+Path}} ()
+\begin{DoxyCompactList}\small\item\em Get the path associated with the vertex. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classVertex_ada5caa9d52492a28504be75b506a33b2}{is\+Visited}} ()
+\begin{DoxyCompactList}\small\item\em Check if the vertex has been visited. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVertex_af28120fff4d47417dc99cc52fdc6ca1b}{set\+Id}} (unsigned int id)
+\begin{DoxyCompactList}\small\item\em Set the identifier of the vertex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVertex_ae940f6bfc46f4f845a3063d4112ebe85}{set\+Code}} (string code)
+\begin{DoxyCompactList}\small\item\em Set the code associated with the vertex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVertex_a15eeabbbb6d517af746ae137c6d5b595}{set\+Visited}} (bool visited)
+\begin{DoxyCompactList}\small\item\em Set the visited status of the vertex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVertex_ab22078586fdb7312cf9f676a8e51406e}{set\+Path}} (\mbox{\hyperlink{classEdge}{Edge}} $\ast$edj)
+\begin{DoxyCompactList}\small\item\em Get the outgoing edges from the vertex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVertex_a96a64eda75c19a77b8aefc1aca43d554}{add\+Edge}} (\mbox{\hyperlink{classVertex}{Vertex}} $\ast$dest, unsigned int capacity)
+\begin{DoxyCompactList}\small\item\em Add an outgoing edge from the vertex to another vertex. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVertex_afcde6d707aff7627df7adde8d8b74a89}\label{classVertex_afcde6d707aff7627df7adde8d8b74a89}} 
+void \mbox{\hyperlink{classVertex_afcde6d707aff7627df7adde8d8b74a89}{remove\+Outgoing\+Edges}} ()
+\begin{DoxyCompactList}\small\item\em Remove all outgoing edges from the vertex. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classVertex_a2d40dc1ca541be9916fbccd984660373}{remove\+Edge}} (string code)
+\begin{DoxyCompactList}\small\item\em Remove an edge with a given code. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVertex_ac2a80daa5a6a208173f55d4d161334f1}{delete\+Edge}} (\mbox{\hyperlink{classEdge}{Edge}} $\ast$edge)
+\begin{DoxyCompactList}\small\item\em Delete an edge from the vertex. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{classVertex_a335afe2118a9452529eccf2b16ec6d5a}{get\+Current\+Flow}} ()
+\begin{DoxyCompactList}\small\item\em Get the current flow through the outgoing edges of the vertex. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a vertex in the graph. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classVertex_a5beff418cf24dd55a53baa72bb7ceb2f}\label{classVertex_a5beff418cf24dd55a53baa72bb7ceb2f}} 
+\index{Vertex@{Vertex}!Vertex@{Vertex}}
+\index{Vertex@{Vertex}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{Vertex()}{Vertex()}}
+{\footnotesize\ttfamily Vertex\+::\+Vertex (\begin{DoxyParamCaption}\item[{unsigned int}]{id,  }\item[{string}]{code }\end{DoxyParamCaption})}
+
+
+
+Constructor for \mbox{\hyperlink{classVertex}{Vertex}} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Identifier of the vertex. \\
+\hline
+{\em code} & Code associated with the vertex. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classVertex_a96a64eda75c19a77b8aefc1aca43d554}\label{classVertex_a96a64eda75c19a77b8aefc1aca43d554}} 
+\index{Vertex@{Vertex}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily void Vertex\+::add\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{dest,  }\item[{unsigned int}]{capacity }\end{DoxyParamCaption})}
+
+
+
+Add an outgoing edge from the vertex to another vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest} & Pointer to the destination vertex. \\
+\hline
+{\em capacity} & Capacity of the edge. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classVertex_ac2a80daa5a6a208173f55d4d161334f1}\label{classVertex_ac2a80daa5a6a208173f55d4d161334f1}} 
+\index{Vertex@{Vertex}!deleteEdge@{deleteEdge}}
+\index{deleteEdge@{deleteEdge}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{deleteEdge()}{deleteEdge()}}
+{\footnotesize\ttfamily void Vertex\+::delete\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEdge}{Edge}} $\ast$}]{edge }\end{DoxyParamCaption})}
+
+
+
+Delete an edge from the vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em edge} & Pointer to the edge to be deleted. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classVertex_ae201ccd5215730e9ca67a146ebadbd8f}\label{classVertex_ae201ccd5215730e9ca67a146ebadbd8f}} 
+\index{Vertex@{Vertex}!getAdj@{getAdj}}
+\index{getAdj@{getAdj}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getAdj()}{getAdj()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \& Vertex\+::get\+Adj (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the outgoing edges from the vertex. 
+
+\begin{DoxyReturn}{Returns}
+Reference to the vector of outgoing edges. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVertex_a569d9889aa2bb893b65fb58343b76bd9}\label{classVertex_a569d9889aa2bb893b65fb58343b76bd9}} 
+\index{Vertex@{Vertex}!getCode@{getCode}}
+\index{getCode@{getCode}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getCode()}{getCode()}}
+{\footnotesize\ttfamily string Vertex\+::get\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the code associated with the vertex. 
+
+\begin{DoxyReturn}{Returns}
+Code associated with the vertex. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVertex_a335afe2118a9452529eccf2b16ec6d5a}\label{classVertex_a335afe2118a9452529eccf2b16ec6d5a}} 
+\index{Vertex@{Vertex}!getCurrentFlow@{getCurrentFlow}}
+\index{getCurrentFlow@{getCurrentFlow}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getCurrentFlow()}{getCurrentFlow()}}
+{\footnotesize\ttfamily unsigned int Vertex\+::get\+Current\+Flow (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the current flow through the outgoing edges of the vertex. 
+
+\begin{DoxyReturn}{Returns}
+Current flow through the outgoing edges. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVertex_a762c560f2bea4182da7d597b84274d94}\label{classVertex_a762c560f2bea4182da7d597b84274d94}} 
+\index{Vertex@{Vertex}!getId@{getId}}
+\index{getId@{getId}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily unsigned int Vertex\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the identifier of the vertex. 
+
+\begin{DoxyReturn}{Returns}
+Identifier of the vertex. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVertex_ae576f526bfece5683e10ca35911c1d25}\label{classVertex_ae576f526bfece5683e10ca35911c1d25}} 
+\index{Vertex@{Vertex}!getIncoming@{getIncoming}}
+\index{getIncoming@{getIncoming}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getIncoming()}{getIncoming()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \& Vertex\+::get\+Incoming (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the incoming edges to the vertex. 
+
+\begin{DoxyReturn}{Returns}
+Reference to the vector of incoming edges. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVertex_a3e195827157be186407ce895fb86e43b}\label{classVertex_a3e195827157be186407ce895fb86e43b}} 
+\index{Vertex@{Vertex}!getPath@{getPath}}
+\index{getPath@{getPath}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getPath()}{getPath()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{Edge}} $\ast$ Vertex\+::get\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the path associated with the vertex. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the path. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVertex_ada5caa9d52492a28504be75b506a33b2}\label{classVertex_ada5caa9d52492a28504be75b506a33b2}} 
+\index{Vertex@{Vertex}!isVisited@{isVisited}}
+\index{isVisited@{isVisited}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{isVisited()}{isVisited()}}
+{\footnotesize\ttfamily bool Vertex\+::is\+Visited (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Check if the vertex has been visited. 
+
+\begin{DoxyReturn}{Returns}
+True if visited, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVertex_a2d40dc1ca541be9916fbccd984660373}\label{classVertex_a2d40dc1ca541be9916fbccd984660373}} 
+\index{Vertex@{Vertex}!removeEdge@{removeEdge}}
+\index{removeEdge@{removeEdge}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{removeEdge()}{removeEdge()}}
+{\footnotesize\ttfamily bool Vertex\+::remove\+Edge (\begin{DoxyParamCaption}\item[{string}]{code }\end{DoxyParamCaption})}
+
+
+
+Remove an edge with a given code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & Code of the destination vertex of the edge to be removed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if an edge was removed, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVertex_ae940f6bfc46f4f845a3063d4112ebe85}\label{classVertex_ae940f6bfc46f4f845a3063d4112ebe85}} 
+\index{Vertex@{Vertex}!setCode@{setCode}}
+\index{setCode@{setCode}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{setCode()}{setCode()}}
+{\footnotesize\ttfamily void Vertex\+::set\+Code (\begin{DoxyParamCaption}\item[{string}]{code }\end{DoxyParamCaption})}
+
+
+
+Set the code associated with the vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & Code to be set. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classVertex_af28120fff4d47417dc99cc52fdc6ca1b}\label{classVertex_af28120fff4d47417dc99cc52fdc6ca1b}} 
+\index{Vertex@{Vertex}!setId@{setId}}
+\index{setId@{setId}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{setId()}{setId()}}
+{\footnotesize\ttfamily void Vertex\+::set\+Id (\begin{DoxyParamCaption}\item[{unsigned int}]{id }\end{DoxyParamCaption})}
+
+
+
+Set the identifier of the vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Identifier to be set. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classVertex_ab22078586fdb7312cf9f676a8e51406e}\label{classVertex_ab22078586fdb7312cf9f676a8e51406e}} 
+\index{Vertex@{Vertex}!setPath@{setPath}}
+\index{setPath@{setPath}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{setPath()}{setPath()}}
+{\footnotesize\ttfamily void Vertex\+::set\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEdge}{Edge}} $\ast$}]{edj }\end{DoxyParamCaption})}
+
+
+
+Get the outgoing edges from the vertex. 
+
+\begin{DoxyReturn}{Returns}
+Reference to the vector of outgoing edges. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVertex_a15eeabbbb6d517af746ae137c6d5b595}\label{classVertex_a15eeabbbb6d517af746ae137c6d5b595}} 
+\index{Vertex@{Vertex}!setVisited@{setVisited}}
+\index{setVisited@{setVisited}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{setVisited()}{setVisited()}}
+{\footnotesize\ttfamily void Vertex\+::set\+Visited (\begin{DoxyParamCaption}\item[{bool}]{visited }\end{DoxyParamCaption})}
+
+
+
+Set the visited status of the vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em visited} & Visited status to be set. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{Graph_8h}{Graph.\+h}}\item 
+src/Graph.\+cpp\end{DoxyCompactItemize}

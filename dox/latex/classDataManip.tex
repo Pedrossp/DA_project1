@@ -1,0 +1,419 @@
+\hypertarget{classDataManip}{}\doxysection{Data\+Manip Class Reference}
+\label{classDataManip}\index{DataManip@{DataManip}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDataManip_a429abd4d3690c231858d63f6e126a8f9}{Data\+Manip}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classDataManip}{Data\+Manip}} class. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDataManip_ad9627d0b2c670b324ebb0ca0b7a48877}\label{classDataManip_ad9627d0b2c670b324ebb0ca0b7a48877}} 
+void \mbox{\hyperlink{classDataManip_ad9627d0b2c670b324ebb0ca0b7a48877}{read\+Cities}} ()
+\begin{DoxyCompactList}\small\item\em Read cities data from a CSV file and populate the data structures. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDataManip_a6e3a8350362cabf8ecef5e534459fa5c}\label{classDataManip_a6e3a8350362cabf8ecef5e534459fa5c}} 
+void \mbox{\hyperlink{classDataManip_a6e3a8350362cabf8ecef5e534459fa5c}{read\+Stations}} ()
+\begin{DoxyCompactList}\small\item\em Read stations data from a CSV file and populate the data structures. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDataManip_a1bcababcca77e859dc351ec9a15fbb98}\label{classDataManip_a1bcababcca77e859dc351ec9a15fbb98}} 
+void \mbox{\hyperlink{classDataManip_a1bcababcca77e859dc351ec9a15fbb98}{read\+Reservoirs}} ()
+\begin{DoxyCompactList}\small\item\em Read reservoirs data from a CSV file and populate the data structures. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDataManip_aea3fec35fa93fd52d06d4d30dd2c0a32}\label{classDataManip_aea3fec35fa93fd52d06d4d30dd2c0a32}} 
+void \mbox{\hyperlink{classDataManip_aea3fec35fa93fd52d06d4d30dd2c0a32}{read\+Pipes}} ()
+\begin{DoxyCompactList}\small\item\em Read pipes data from a CSV file and populate the data structures. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDataManip_afb0c8446bd91f640e84e663e9ccf956a}\label{classDataManip_afb0c8446bd91f640e84e663e9ccf956a}} 
+void \mbox{\hyperlink{classDataManip_afb0c8446bd91f640e84e663e9ccf956a}{read\+CitiesL}} ()
+\begin{DoxyCompactList}\small\item\em Read cities data from a CSV file in the large data set and populate the data structures. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDataManip_a069d61fb7022fda935b17b798600fe74}\label{classDataManip_a069d61fb7022fda935b17b798600fe74}} 
+void \mbox{\hyperlink{classDataManip_a069d61fb7022fda935b17b798600fe74}{read\+StationsL}} ()
+\begin{DoxyCompactList}\small\item\em Read stations data from a CSV file in the large data set and populate the data structures. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDataManip_aa8a4e70eb5b41d0d2a90758b4c5d7c77}\label{classDataManip_aa8a4e70eb5b41d0d2a90758b4c5d7c77}} 
+void \mbox{\hyperlink{classDataManip_aa8a4e70eb5b41d0d2a90758b4c5d7c77}{read\+ReservoirsL}} ()
+\begin{DoxyCompactList}\small\item\em Read reservoirs data from a CSV file in the large data set and populate the data structures. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDataManip_a2d5a639815c2b01e09bc529708e05c94}\label{classDataManip_a2d5a639815c2b01e09bc529708e05c94}} 
+void \mbox{\hyperlink{classDataManip_a2d5a639815c2b01e09bc529708e05c94}{read\+PipesL}} ()
+\begin{DoxyCompactList}\small\item\em Read pipes data from a CSV file in the large data set and populate the data structures. \end{DoxyCompactList}\item 
+map$<$ string, \mbox{\hyperlink{classCity}{City}} $\ast$ $>$ \mbox{\hyperlink{classDataManip_af30197aa1a20963aea0f069cc5824db1}{get\+CitiesC}} ()
+\begin{DoxyCompactList}\small\item\em Get the map of cities by code. \end{DoxyCompactList}\item 
+map$<$ string, \mbox{\hyperlink{classCity}{City}} $\ast$ $>$ \mbox{\hyperlink{classDataManip_af1e556e30b43f2b3ce1013aae422a4ac}{get\+CitiesN}} ()
+\begin{DoxyCompactList}\small\item\em Get the map of cities by name. \end{DoxyCompactList}\item 
+map$<$ string, \mbox{\hyperlink{classStation}{Station}} $\ast$ $>$ \mbox{\hyperlink{classDataManip_a33b165cac80dfa4b0636b3ff2348efc6}{get\+Stations}} ()
+\begin{DoxyCompactList}\small\item\em Get the map of stations. \end{DoxyCompactList}\item 
+map$<$ string, \mbox{\hyperlink{classReservoir}{Reservoir}} $\ast$ $>$ \mbox{\hyperlink{classDataManip_a45db5e2770f3abbbb8a27f0571b66818}{get\+Reservoirs}} ()
+\begin{DoxyCompactList}\small\item\em Get the map of reservoirs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classGraph}{Graph}} \mbox{\hyperlink{classDataManip_a07820ea9a44d26b482cae7d99d05116a}{get\+Graph}} ()
+\begin{DoxyCompactList}\small\item\em Get the graph representing connections between cities, stations, and reservoirs. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classDataManip_a49f72542e61a848e805e9facdaced082}{verify\+City\+Code}} (string city\+Code\+Or\+Name)
+\begin{DoxyCompactList}\small\item\em Verify city code or name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDataManip_a4a732b3be343efce690f5f4b3a37150d}{normalize\+Graph}} ()
+\begin{DoxyCompactList}\small\item\em Normalize the graph. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDataManip_a07f9351db9892fa07d55431bdaea6588}{find\+Augmenting\+Path}} (\mbox{\hyperlink{classVertex}{Vertex}} $\ast$s, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$t)
+\begin{DoxyCompactList}\small\item\em Find an augmenting path from source \textquotesingle{}s\textquotesingle{} to sink \textquotesingle{}t\textquotesingle{} in the graph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDataManip_ac3c06df80ae7332913f1b4fb6836ba76}{test\+And\+Visit}} (queue$<$ \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \&q, \mbox{\hyperlink{classEdge}{Edge}} $\ast$e, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$w, double residual)
+\begin{DoxyCompactList}\small\item\em Test and visit a vertex. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classDataManip_acb1efa509c45144dd686141ddc8899c1}{find\+Min\+Residual\+Along\+Path}} (\mbox{\hyperlink{classVertex}{Vertex}} $\ast$s, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$t)
+\begin{DoxyCompactList}\small\item\em Find the minimum residual capacity along an augmenting path from source \textquotesingle{}s\textquotesingle{} to sink \textquotesingle{}t\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDataManip_abe9e44bc0e04fdc88862674e32723d24}{augment\+Flow\+Along\+Path}} (\mbox{\hyperlink{classVertex}{Vertex}} $\ast$s, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$t, double f)
+\begin{DoxyCompactList}\small\item\em Augment flow along an augmenting path from source \textquotesingle{}s\textquotesingle{} to sink \textquotesingle{}t\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDataManip_aa83fe0b71e04cce777e18d344bc93719}{max\+Flow\+Edmonds}} ()
+\begin{DoxyCompactList}\small\item\em Calculate the maximum flow in the graph using the Edmonds-\/\+Karp algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDataManip_a70c7207186d8815be3027e57284a2e52}{max\+FLow\+Total\+City}} (int choose, string city\+Code\+Or\+Name)
+\begin{DoxyCompactList}\small\item\em Calculate and display the maximum flow of water in the network, either total or for a specific city. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDataManip_ab59818e3e118aac3bfaab48cee367c17}{get\+Deficit}} ()
+\begin{DoxyCompactList}\small\item\em Calculate and display the deficit of water for each city. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDataManip_a011cb1e9a4b50aab60522619cc248659}{get\+Average\+Difference}} ()
+\begin{DoxyCompactList}\small\item\em Calculate and display the average difference, maximum difference, and variance between edge capacities and flows. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDataManip_aa5ebf28c2b33e8e10acac716f72027f9}{Balance\+Flow}} ()
+\begin{DoxyCompactList}\small\item\em Balance the flow across edges in the graph to ensure that the total flow into each vertex matches its total capacity. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classDataManip_a87a496e4c5a426566b0b73c772ce3f04}{verify\+Reservoir\+Code}} (string reservoir\+Name\+Or\+Code)
+\begin{DoxyCompactList}\small\item\em Verify city code or name. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDataManip_a9d66041356fcca4827a06a3c51e94388}\label{classDataManip_a9d66041356fcca4827a06a3c51e94388}} 
+void {\bfseries station\+Removed} (vector$<$ string $>$ s\+Codes)
+\item 
+void \mbox{\hyperlink{classDataManip_a7ae69424dd271f8b1e42ad8249d782f2}{reservoir\+Out\+Of\+Commission}} (vector$<$ string $>$ code\+Or\+Name)
+\begin{DoxyCompactList}\small\item\em Simulate the removal of reservoirs from commission. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDataManip_ac61719284835fa07882cdaa2885a5171}{pipeline\+Removed}} (vector$<$ pair$<$ string, string $>$$>$ p)
+\begin{DoxyCompactList}\small\item\em Simulate the removal of pipelines. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDataManip_a7dac7621f6afc001f3afffadcc5549b7}{cities\+Flow}} ()
+\begin{DoxyCompactList}\small\item\em Calculate and set the total flow of water into each city. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDataManip_a429abd4d3690c231858d63f6e126a8f9}\label{classDataManip_a429abd4d3690c231858d63f6e126a8f9}} 
+\index{DataManip@{DataManip}!DataManip@{DataManip}}
+\index{DataManip@{DataManip}!DataManip@{DataManip}}
+\doxysubsubsection{\texorpdfstring{DataManip()}{DataManip()}}
+{\footnotesize\ttfamily Data\+Manip\+::\+Data\+Manip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor for \mbox{\hyperlink{classDataManip}{Data\+Manip}} class. 
+
+This constructor initializes a \mbox{\hyperlink{classDataManip}{Data\+Manip}} object. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDataManip_abe9e44bc0e04fdc88862674e32723d24}\label{classDataManip_abe9e44bc0e04fdc88862674e32723d24}} 
+\index{DataManip@{DataManip}!augmentFlowAlongPath@{augmentFlowAlongPath}}
+\index{augmentFlowAlongPath@{augmentFlowAlongPath}!DataManip@{DataManip}}
+\doxysubsubsection{\texorpdfstring{augmentFlowAlongPath()}{augmentFlowAlongPath()}}
+{\footnotesize\ttfamily void Data\+Manip\+::augment\+Flow\+Along\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{s,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{t,  }\item[{double}]{f }\end{DoxyParamCaption})}
+
+
+
+Augment flow along an augmenting path from source \textquotesingle{}s\textquotesingle{} to sink \textquotesingle{}t\textquotesingle{}. 
+
+This function traverses the augmenting path from sink vertex \textquotesingle{}t\textquotesingle{} to source vertex \textquotesingle{}s\textquotesingle{} and updates the flow values of the edges accordingly. It iterates through the edges along the path and adjusts the flow based on the direction of the edge.
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & The source vertex of the augmenting path. \\
+\hline
+{\em t} & The sink vertex of the augmenting path. \\
+\hline
+{\em f} & The amount by which to augment the flow.\\
+\hline
+\end{DoxyParams}
+@complexity Let k be the length of the augmenting path. The function iterates through the edges along the path once, performing constant-\/time operations at each step. Therefore, the overall time complexity is O(k), where k is the length of the augmenting path. \mbox{\Hypertarget{classDataManip_aa5ebf28c2b33e8e10acac716f72027f9}\label{classDataManip_aa5ebf28c2b33e8e10acac716f72027f9}} 
+\index{DataManip@{DataManip}!BalanceFlow@{BalanceFlow}}
+\index{BalanceFlow@{BalanceFlow}!DataManip@{DataManip}}
+\doxysubsubsection{\texorpdfstring{BalanceFlow()}{BalanceFlow()}}
+{\footnotesize\ttfamily void Data\+Manip\+::\+Balance\+Flow (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Balance the flow across edges in the graph to ensure that the total flow into each vertex matches its total capacity. 
+
+This function iterates over all vertices in the graph and adjusts the flow across edges to balance it with the total capacity of the vertex. If a vertex represents a reservoir (identified by starting with \char`\"{}\+R\char`\"{}), it ensures that the total flow into the reservoir does not exceed its maximum delivery capacity.
+
+@complexity The time complexity of this function depends on the number of vertices and edges in the graph. The function iterates through all vertices and their adjacent edges, resulting in a linear-\/time operation with respect to the number of vertices and edges. Within the nested loops, it performs calculations and adjustments with constant-\/time complexity. Therefore, the overall time complexity of this function is O(\+V $\ast$ E), where V is the number of vertices and E is the number of edges in the graph. \mbox{\Hypertarget{classDataManip_a7dac7621f6afc001f3afffadcc5549b7}\label{classDataManip_a7dac7621f6afc001f3afffadcc5549b7}} 
+\index{DataManip@{DataManip}!citiesFlow@{citiesFlow}}
+\index{citiesFlow@{citiesFlow}!DataManip@{DataManip}}
+\doxysubsubsection{\texorpdfstring{citiesFlow()}{citiesFlow()}}
+{\footnotesize\ttfamily void Data\+Manip\+::cities\+Flow (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calculate and set the total flow of water into each city. 
+
+This function iterates over all cities in the network and calculates the total flow of water into each city by summing the flow across all incoming edges. It then sets the calculated total flow value for each city.
+
+\begin{DoxyNote}{Note}
+This function assumes that each city in the network is represented by a vertex in the graph\+\_\+ member variable. 
+\end{DoxyNote}
+\mbox{\Hypertarget{classDataManip_a07f9351db9892fa07d55431bdaea6588}\label{classDataManip_a07f9351db9892fa07d55431bdaea6588}} 
+\index{DataManip@{DataManip}!findAugmentingPath@{findAugmentingPath}}
+\index{findAugmentingPath@{findAugmentingPath}!DataManip@{DataManip}}
+\doxysubsubsection{\texorpdfstring{findAugmentingPath()}{findAugmentingPath()}}
+{\footnotesize\ttfamily bool Data\+Manip\+::find\+Augmenting\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{s,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{t }\end{DoxyParamCaption})}
+
+
+
+Find an augmenting path from source \textquotesingle{}s\textquotesingle{} to sink \textquotesingle{}t\textquotesingle{} in the graph. 
+
+This function searches for an augmenting path from source vertex \textquotesingle{}s\textquotesingle{} to sink vertex \textquotesingle{}t\textquotesingle{} in the graph using BFS. It marks vertices as visited during the search process and utilizes the \textquotesingle{}test\+And\+Visit\textquotesingle{} function to enqueue vertices to the BFS queue.
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & The source vertex of the augmenting path. \\
+\hline
+{\em t} & The sink vertex of the augmenting path. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if an augmenting path is found from \textquotesingle{}s\textquotesingle{} to \textquotesingle{}t\textquotesingle{}, otherwise false.
+\end{DoxyReturn}
+@complexity The time complexity of this function depends on the size of the graph and the efficiency of the \textquotesingle{}test\+And\+Visit\textquotesingle{} function. Let n be the number of vertices and m be the number of edges in the graph. The function performs a BFS traversal from the source vertex \textquotesingle{}s\textquotesingle{} to the sink vertex \textquotesingle{}t\textquotesingle{}, visiting each vertex and edge at most once. Therefore, the overall time complexity is O(n + m). \mbox{\Hypertarget{classDataManip_acb1efa509c45144dd686141ddc8899c1}\label{classDataManip_acb1efa509c45144dd686141ddc8899c1}} 
+\index{DataManip@{DataManip}!findMinResidualAlongPath@{findMinResidualAlongPath}}
+\index{findMinResidualAlongPath@{findMinResidualAlongPath}!DataManip@{DataManip}}
+\doxysubsubsection{\texorpdfstring{findMinResidualAlongPath()}{findMinResidualAlongPath()}}
+{\footnotesize\ttfamily double Data\+Manip\+::find\+Min\+Residual\+Along\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{s,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{t }\end{DoxyParamCaption})}
+
+
+
+Find the minimum residual capacity along an augmenting path from source \textquotesingle{}s\textquotesingle{} to sink \textquotesingle{}t\textquotesingle{}. 
+
+This function traverses the augmenting path from sink vertex \textquotesingle{}t\textquotesingle{} to source vertex \textquotesingle{}s\textquotesingle{} to find the minimum residual capacity. It iterates through the edges along the path and calculates the minimum residual capacity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & The source vertex of the augmenting path. \\
+\hline
+{\em t} & The sink vertex of the augmenting path. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The minimum residual capacity along the augmenting path.
+\end{DoxyReturn}
+@complexity Let k be the length of the augmenting path. The function iterates through the edges along the path once, performing constant-\/time operations at each step. Therefore, the overall time complexity is O(k), where k is the length of the augmenting path. \mbox{\Hypertarget{classDataManip_a011cb1e9a4b50aab60522619cc248659}\label{classDataManip_a011cb1e9a4b50aab60522619cc248659}} 
+\index{DataManip@{DataManip}!getAverageDifference@{getAverageDifference}}
+\index{getAverageDifference@{getAverageDifference}!DataManip@{DataManip}}
+\doxysubsubsection{\texorpdfstring{getAverageDifference()}{getAverageDifference()}}
+{\footnotesize\ttfamily void Data\+Manip\+::get\+Average\+Difference (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calculate and display the average difference, maximum difference, and variance between edge capacities and flows. 
+
+This function computes the average difference, maximum difference, and variance between the capacities and flows of all edges in the network. It then displays these statistical measures.
+
+@complexity The time complexity of this function depends on the number of vertices and edges in the graph. The function iterates through all edges in the graph to calculate the differences between their capacities and flows, resulting in a linear-\/time operation. After computing the differences, the function calculates the average and variance, which also have linear-\/time complexity. Therefore, the overall time complexity of this function is O(\+V $\ast$ E), where V is the number of vertices and E is the number of edges in the graph. \mbox{\Hypertarget{classDataManip_af30197aa1a20963aea0f069cc5824db1}\label{classDataManip_af30197aa1a20963aea0f069cc5824db1}} 
+\index{DataManip@{DataManip}!getCitiesC@{getCitiesC}}
+\index{getCitiesC@{getCitiesC}!DataManip@{DataManip}}
+\doxysubsubsection{\texorpdfstring{getCitiesC()}{getCitiesC()}}
+{\footnotesize\ttfamily map$<$ string, \mbox{\hyperlink{classCity}{City}} $\ast$ $>$ Data\+Manip\+::get\+CitiesC (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the map of cities by code. 
+
+\begin{DoxyReturn}{Returns}
+Map of cities by code. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataManip_af1e556e30b43f2b3ce1013aae422a4ac}\label{classDataManip_af1e556e30b43f2b3ce1013aae422a4ac}} 
+\index{DataManip@{DataManip}!getCitiesN@{getCitiesN}}
+\index{getCitiesN@{getCitiesN}!DataManip@{DataManip}}
+\doxysubsubsection{\texorpdfstring{getCitiesN()}{getCitiesN()}}
+{\footnotesize\ttfamily map$<$ string, \mbox{\hyperlink{classCity}{City}} $\ast$ $>$ Data\+Manip\+::get\+CitiesN (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the map of cities by name. 
+
+\begin{DoxyReturn}{Returns}
+Map of cities by name. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataManip_ab59818e3e118aac3bfaab48cee367c17}\label{classDataManip_ab59818e3e118aac3bfaab48cee367c17}} 
+\index{DataManip@{DataManip}!getDeficit@{getDeficit}}
+\index{getDeficit@{getDeficit}!DataManip@{DataManip}}
+\doxysubsubsection{\texorpdfstring{getDeficit()}{getDeficit()}}
+{\footnotesize\ttfamily void Data\+Manip\+::get\+Deficit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calculate and display the deficit of water for each city. 
+
+This function computes the deficit of water for each city in the network by subtracting the actual flow of water from the city\textquotesingle{}s demand. It then displays the deficit for each city along with its demand and actual flow.
+
+@complexity The overall time complexity of this function is O(n), where n is the number of cities in the network. \mbox{\Hypertarget{classDataManip_a07820ea9a44d26b482cae7d99d05116a}\label{classDataManip_a07820ea9a44d26b482cae7d99d05116a}} 
+\index{DataManip@{DataManip}!getGraph@{getGraph}}
+\index{getGraph@{getGraph}!DataManip@{DataManip}}
+\doxysubsubsection{\texorpdfstring{getGraph()}{getGraph()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classGraph}{Graph}} Data\+Manip\+::get\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the graph representing connections between cities, stations, and reservoirs. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classGraph}{Graph}} representing connections. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataManip_a45db5e2770f3abbbb8a27f0571b66818}\label{classDataManip_a45db5e2770f3abbbb8a27f0571b66818}} 
+\index{DataManip@{DataManip}!getReservoirs@{getReservoirs}}
+\index{getReservoirs@{getReservoirs}!DataManip@{DataManip}}
+\doxysubsubsection{\texorpdfstring{getReservoirs()}{getReservoirs()}}
+{\footnotesize\ttfamily map$<$ string, \mbox{\hyperlink{classReservoir}{Reservoir}} $\ast$ $>$ Data\+Manip\+::get\+Reservoirs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the map of reservoirs. 
+
+\begin{DoxyReturn}{Returns}
+Map of reservoirs. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataManip_a33b165cac80dfa4b0636b3ff2348efc6}\label{classDataManip_a33b165cac80dfa4b0636b3ff2348efc6}} 
+\index{DataManip@{DataManip}!getStations@{getStations}}
+\index{getStations@{getStations}!DataManip@{DataManip}}
+\doxysubsubsection{\texorpdfstring{getStations()}{getStations()}}
+{\footnotesize\ttfamily map$<$ string, \mbox{\hyperlink{classStation}{Station}} $\ast$ $>$ Data\+Manip\+::get\+Stations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the map of stations. 
+
+\begin{DoxyReturn}{Returns}
+Map of stations. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataManip_aa83fe0b71e04cce777e18d344bc93719}\label{classDataManip_aa83fe0b71e04cce777e18d344bc93719}} 
+\index{DataManip@{DataManip}!maxFlowEdmonds@{maxFlowEdmonds}}
+\index{maxFlowEdmonds@{maxFlowEdmonds}!DataManip@{DataManip}}
+\doxysubsubsection{\texorpdfstring{maxFlowEdmonds()}{maxFlowEdmonds()}}
+{\footnotesize\ttfamily void Data\+Manip\+::max\+Flow\+Edmonds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calculate the maximum flow in the graph using the Edmonds-\/\+Karp algorithm. 
+
+This function computes the maximum flow in the graph using the Edmonds-\/\+Karp algorithm. It first normalizes the graph by adding a super source and a super sink, then finds augmenting paths from the super source to the super sink repeatedly until no more augmenting paths exist. Along each augmenting path, it calculates the minimum residual capacity and augments the flow accordingly. After computing the maximum flow, it performs additional processing, such as updating flow values and removing the super source and super sink vertices from the graph.
+
+@complexity The time complexity of this function is O(\+V $\ast$ E$^\wedge$2), where V is the number of vertices and E is the number of edges in the graph. This complexity arises from the repeated execution of BFS to find augmenting paths, where each BFS has a complexity of O(V + E), and the maximum number of iterations of BFS is O(\+E) in the worst case. \mbox{\Hypertarget{classDataManip_a70c7207186d8815be3027e57284a2e52}\label{classDataManip_a70c7207186d8815be3027e57284a2e52}} 
+\index{DataManip@{DataManip}!maxFLowTotalCity@{maxFLowTotalCity}}
+\index{maxFLowTotalCity@{maxFLowTotalCity}!DataManip@{DataManip}}
+\doxysubsubsection{\texorpdfstring{maxFLowTotalCity()}{maxFLowTotalCity()}}
+{\footnotesize\ttfamily void Data\+Manip\+::max\+FLow\+Total\+City (\begin{DoxyParamCaption}\item[{int}]{choose,  }\item[{string}]{city\+Code\+Or\+Name }\end{DoxyParamCaption})}
+
+
+
+Calculate and display the maximum flow of water in the network, either total or for a specific city. 
+
+This function computes the maximum flow of water in the network using the Edmonds-\/\+Karp algorithm and then displays the result. It allows the user to choose between displaying the total maximum water flow for all cities or the maximum water flow for a specific city.
+
+
+\begin{DoxyParams}{Parameters}
+{\em choose} & An integer indicating the user\textquotesingle{}s choice\+: 0 for total maximum water flow, 1 for maximum water flow for a specific city. \\
+\hline
+{\em city\+Code\+Or\+Name} & A string representing the city code or name for which the maximum water flow is to be calculated (relevant only when choose is 1). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDataManip_a4a732b3be343efce690f5f4b3a37150d}\label{classDataManip_a4a732b3be343efce690f5f4b3a37150d}} 
+\index{DataManip@{DataManip}!normalizeGraph@{normalizeGraph}}
+\index{normalizeGraph@{normalizeGraph}!DataManip@{DataManip}}
+\doxysubsubsection{\texorpdfstring{normalizeGraph()}{normalizeGraph()}}
+{\footnotesize\ttfamily void Data\+Manip\+::normalize\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Normalize the graph. 
+
+This function modifies the original graph by adding additional vertices and edges to create a normalized version of the graph for certain operations or analyses.
+
+Specifically, it adds a super source vertex (\char`\"{}\+SS\char`\"{}) and a super sink vertex (\char`\"{}\+SSK\char`\"{}) to the graph, and connects the super source vertex to each reservoir with an edge representing its maximum delivery capacity, and connects each city to the super sink vertex with an edge representing its demand.
+
+@complexity The overall time complexity of this function is O(r + c). \mbox{\Hypertarget{classDataManip_ac61719284835fa07882cdaa2885a5171}\label{classDataManip_ac61719284835fa07882cdaa2885a5171}} 
+\index{DataManip@{DataManip}!pipelineRemoved@{pipelineRemoved}}
+\index{pipelineRemoved@{pipelineRemoved}!DataManip@{DataManip}}
+\doxysubsubsection{\texorpdfstring{pipelineRemoved()}{pipelineRemoved()}}
+{\footnotesize\ttfamily void Data\+Manip\+::pipeline\+Removed (\begin{DoxyParamCaption}\item[{vector$<$ pair$<$ string, string $>$$>$}]{p }\end{DoxyParamCaption})}
+
+
+
+Simulate the removal of pipelines. 
+
+This function simulates the effect of removing pipelines by setting the capacities of specified edges to zero. It recalculates the maximum flow in the network after adjusting the edge capacities. Then, it identifies cities affected by the removal based on the decrease in flow compared to the previous flow values. Finally, it restores the original capacities of the removed edges.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vector} & A vector containing pairs of strings representing the endpoints of the pipelines to be removed. Each pair represents a pipeline to be removed.\\
+\hline
+\end{DoxyParams}
+@complexity The time complexity of this function depends on the number of cities and edges in the respective maps. The function performs an iteration over the cities\+C\+\_\+ map to store and restore flow values, resulting in linear-\/time complexity with respect to the number of cities. It also performs operations on edges connected to the removed pipelines, which have a constant-\/time complexity within the loop, resulting in linear-\/time complexity with respect to the number of edges affected. Therefore, the overall time complexity of this function is O(\+V $\ast$ E$^\wedge$2). \mbox{\Hypertarget{classDataManip_a7ae69424dd271f8b1e42ad8249d782f2}\label{classDataManip_a7ae69424dd271f8b1e42ad8249d782f2}} 
+\index{DataManip@{DataManip}!reservoirOutOfCommission@{reservoirOutOfCommission}}
+\index{reservoirOutOfCommission@{reservoirOutOfCommission}!DataManip@{DataManip}}
+\doxysubsubsection{\texorpdfstring{reservoirOutOfCommission()}{reservoirOutOfCommission()}}
+{\footnotesize\ttfamily void Data\+Manip\+::reservoir\+Out\+Of\+Commission (\begin{DoxyParamCaption}\item[{vector$<$ string $>$}]{code\+Or\+Name }\end{DoxyParamCaption})}
+
+
+
+Simulate the removal of reservoirs from commission. 
+
+This function simulates the effect of removing reservoirs from commission by setting their maximum delivery to zero. It recalculates the maximum flow in the network after adjusting the reservoirs\textquotesingle{} maximum delivery values. Then, it identifies cities affected by the removal based on the decrease in flow compared to the previous flow values. Finally, it restores the original maximum delivery values of the removed reservoirs.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & A vector containing the codes or names of reservoirs to be removed from commission.\\
+\hline
+\end{DoxyParams}
+@complexity The time complexity of this function depends on the number of cities and reservoirs in the respective maps. The function performs two iterations over the cities\+C\+\_\+ map to store and restore flow values, resulting in linear-\/time complexity with respect to the number of cities. It also performs operations on reservoirs, which have a constant-\/time complexity within the loop, resulting in linear-\/time complexity with respect to the number of reservoirs. Therefore, the overall time complexity of this function is O(\+V $\ast$ E$^\wedge$2). \mbox{\Hypertarget{classDataManip_ac3c06df80ae7332913f1b4fb6836ba76}\label{classDataManip_ac3c06df80ae7332913f1b4fb6836ba76}} 
+\index{DataManip@{DataManip}!testAndVisit@{testAndVisit}}
+\index{testAndVisit@{testAndVisit}!DataManip@{DataManip}}
+\doxysubsubsection{\texorpdfstring{testAndVisit()}{testAndVisit()}}
+{\footnotesize\ttfamily void Data\+Manip\+::test\+And\+Visit (\begin{DoxyParamCaption}\item[{queue$<$ \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \&}]{q,  }\item[{\mbox{\hyperlink{classEdge}{Edge}} $\ast$}]{e,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{w,  }\item[{double}]{residual }\end{DoxyParamCaption})}
+
+
+
+Test and visit a vertex. 
+
+This function tests whether the vertex \textquotesingle{}w\textquotesingle{} has been visited before and if the residual capacity of the edge \textquotesingle{}e\textquotesingle{} to \textquotesingle{}w\textquotesingle{} is greater than 0. If \textquotesingle{}w\textquotesingle{} has not been visited and the residual capacity is positive, \textquotesingle{}w\textquotesingle{} is marked as visited, its path through which it was reached is set, and it is enqueued.
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & The queue to enqueue \textquotesingle{}w\textquotesingle{} if it meets the conditions. \\
+\hline
+{\em e} & The edge through which \textquotesingle{}w\textquotesingle{} is reached. \\
+\hline
+{\em w} & The vertex to test and visit. \\
+\hline
+{\em residual} & The residual capacity of the edge \textquotesingle{}e\textquotesingle{} to \textquotesingle{}w\textquotesingle{}.\\
+\hline
+\end{DoxyParams}
+@complexity The time complexity of this function is O(1) as it performs a constant number of operations regardless of the input size. \mbox{\Hypertarget{classDataManip_a49f72542e61a848e805e9facdaced082}\label{classDataManip_a49f72542e61a848e805e9facdaced082}} 
+\index{DataManip@{DataManip}!verifyCityCode@{verifyCityCode}}
+\index{verifyCityCode@{verifyCityCode}!DataManip@{DataManip}}
+\doxysubsubsection{\texorpdfstring{verifyCityCode()}{verifyCityCode()}}
+{\footnotesize\ttfamily string Data\+Manip\+::verify\+City\+Code (\begin{DoxyParamCaption}\item[{string}]{city\+Code\+Or\+Name }\end{DoxyParamCaption})}
+
+
+
+Verify city code or name. 
+
+This function verifies if the given city\+Name\+Or\+Code is a code or a name of the city. If it\textquotesingle{}s the name its corresponding code is returned. If it\textquotesingle{}s the code, input city\+Name\+Or\+Code is returned unchanged.
+
+
+\begin{DoxyParams}{Parameters}
+{\em city\+Name\+Or\+Code} & The name or code of the city to verify. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The city code. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataManip_a87a496e4c5a426566b0b73c772ce3f04}\label{classDataManip_a87a496e4c5a426566b0b73c772ce3f04}} 
+\index{DataManip@{DataManip}!verifyReservoirCode@{verifyReservoirCode}}
+\index{verifyReservoirCode@{verifyReservoirCode}!DataManip@{DataManip}}
+\doxysubsubsection{\texorpdfstring{verifyReservoirCode()}{verifyReservoirCode()}}
+{\footnotesize\ttfamily string Data\+Manip\+::verify\+Reservoir\+Code (\begin{DoxyParamCaption}\item[{string}]{reservoir\+Name\+Or\+Code }\end{DoxyParamCaption})}
+
+
+
+Verify city code or name. 
+
+This function verifies if the given city\+Name\+Or\+Code is a code or a name of the city. If it\textquotesingle{}s the name, its corresponding code is returned. If it\textquotesingle{}s the code, input city\+Name\+Or\+Code is returned unchanged.
+
+
+\begin{DoxyParams}{Parameters}
+{\em city\+Name\+Or\+Code} & The name or code of the city to verify. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The city code. If the input is already a code, it is returned unchanged. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Data\+Manip.\+h\item 
+src/Data\+Manip.\+cpp\end{DoxyCompactItemize}

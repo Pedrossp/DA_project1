@@ -1,0 +1,22 @@
+\hypertarget{City_8h}{}\doxysection{src/\+City.h File Reference}
+\label{City_8h}\index{src/City.h@{src/City.h}}
+
+
+Definition of \mbox{\hyperlink{classCity}{City}} class.  
+
+
+{\ttfamily \#include $<$string$>$}\newline
+Include dependency graph for City.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classCity}{City}}
+\begin{DoxyCompactList}\small\item\em Represents a city in a transportation system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Definition of \mbox{\hyperlink{classCity}{City}} class. 
+

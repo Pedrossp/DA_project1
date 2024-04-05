@@ -26,6 +26,7 @@ int main(){
     cout << "Choose an option: ";
     cin >> option;
 
+
     switch (option) {
         case '1':
             //Smal data set
@@ -45,8 +46,12 @@ int main(){
 
             break;
 
+        case 'e':
+            cout << endl << endl << "Exiting program..." << endl;
+            this_thread::sleep_for(chrono::seconds(2));
+            return 0;
         default:
-            break;
+            cout << endl << "Not a valid option!" << endl;
     }
 
     Menu menu = Menu(data);
