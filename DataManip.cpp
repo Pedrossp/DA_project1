@@ -705,6 +705,8 @@ void DataManip::pipelineRemoved(vector<pair<string, string>> vector) {
     maxFlowEdmonds();
     map<string, int>  oldFlowMap;
     map<Edge*,int > oldCapacity;
+    int count = 0;
+
     for (auto city: citiesC_){
         oldFlowMap.insert({city.first, city.second->getFlow()});
     }
@@ -722,6 +724,16 @@ void DataManip::pipelineRemoved(vector<pair<string, string>> vector) {
             oldCapacity.insert({edge1, edge1->getCapacity()});
             edge1->setCapacity(0);
         }
+
+        if((edge == nullptr) && (edge1 == nullptr)){
+            count++;
+            cout << "No pipeline between the selected locations: " << p.first << "-" << p.second << endl;
+        }
+    }
+
+    if(count == vector.size()){
+        cout << "No valid pipeline selected." << endl;
+        return;
     }
 
     maxFlowEdmonds();

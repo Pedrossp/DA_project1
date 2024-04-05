@@ -15,9 +15,7 @@ void Menu::MainMenu() {
                  << "│  1 - Get Max Amount of Water      │" << endl
                  << "│  2 - Deficit per City             │" << endl
                  << "│  3 - Balance Flow                 │" << endl
-                 << "│  4 - Reservoirs Out of Comission  │" << endl
-                 << "│  5 - Pumping Station Removed      │" << endl
-                 << "│  6 - Pipeline Rupture             │" << endl
+                 << "│  4 - Failures on Network          │" << endl
                  << "│  e - Exit                         │" << endl
                  << "└───────────────────────────────────┘" << endl
                  << endl
@@ -38,17 +36,8 @@ void Menu::MainMenu() {
                 balanceFlow();
                 return MainMenu();
             case ('4'):
-                otherInfo();
+                networkFailures();
                 return MainMenu();
-
-            case ('5'):
-                otherInfo();
-                return MainMenu();
-
-            case ('6'):
-                otherInfo();
-                return MainMenu();
-
             case ('e'):
                 return exitProgram();
 
@@ -109,104 +98,9 @@ void Menu::maxWater() {
         }
     }
 }
-/*
-    cout << endl;
-    cout << "Choose the type of destination:" << endl;
-    cout << "┌────────────────────────────────────┐" << endl
-         << "│  1 - By Airport                    │" << endl
-         << "│  2 - By City                       │" << endl
-         << "│  3 - By Coordinates                │" << endl
-         << "│  4 - By Coordinates & Radius       │" << endl
-         << "│  b - Go Back                       │" << endl
-         << "│  e - Exit                          │" << endl
-         << "└────────────────────────────────────┘" << endl
-         << endl
-         << "What would you like to do next? ";
 
-    char inputTypeD;
-    string inputDestination;
-    int inputRadiusD = 0;
-    int flag2 = 1;
-    while (flag2){
-        cout << "Choose option: ";
-        cin >> inputTypeD;
-        switch (inputTypeD) {
-            case ('1'):
-                cout << endl << "Insert destination airport: " << endl;
-                cin >> inputDestination;
-                if (data_.getAirports().find(inputDestination) == data_.getAirports().end()){
-                    cout << "\nNot a valid airport...\nTry again!\n\n";
-                    findFlights();
-                }
-                flag2 = 0;
-                break;
 
-            case ('2'):
-                cout << endl << "Insert destination city: [Format: <city>,<country> (because of repeated city names)]" << endl;
-                getline(cin >>ws, inputDestination);
-                if (data_.getCities().find(inputDestination) == data_.getCities().end()){
-                    cout << "\nNot a valid city...\nTry again!\n\n";
-                    findFlights();
-                }
-                flag2 = 0;
-                break;
-            case ('3'):
-                cout << endl << "Insert destination coordinates: [Format: x.(...),y.(...)]" << endl;
-                cin >> inputDestination;
-                flag2 = 0;
-                break;
-            case ('4'):
-                cout << endl << "Insert destination coordinates: [Format: x.(...),y.(...)]" << endl;
-                cin >> inputDestination;
-                flag2 = 0;
-                cout << endl << "Insert radius: " << endl;
-                cin >> inputRadiusD;
-                break;
-            case ('b'):
-                return;
 
-            case ('e'):
-                return exitProgram();
-
-            default:
-                cout << endl << "Not a valid option!" << endl;
-        }
-    }
-
-    //filters
-
-    cout << "Do you want an airline filter?" << endl;
-    cout << "┌────────────────────────────────────┐" << endl
-         << "│  y - Yes                           │" << endl
-         << "│  n - No                            │" << endl
-         << "└────────────────────────────────────┘" << endl
-         << endl
-         << "What would you like to do next? ";
-    char yn;
-    vector<string> filters = {};
-    bool flag3 = true;
-    while(flag3) {
-        cout << "Choose option: ";
-        cin >> yn;
-        switch (yn) {
-            case ('y'):
-                filters = createVec();
-                flag3 = 0;
-                break;
-            case ('n'):
-                flag3 = 0;
-                break;
-            default:
-                cout << "Not a valid option!" << endl;
-        }
-    }
-
-    data_.getFlights(inputOrigin, inputDestination, inputTypeO-48, inputTypeD-48, filters,inputRadiusO ,inputRadiusD);
-    back();
-    return MainMenu();
-}
-
-*/
 
 void Menu::deficitPerCity() {
     char option1;
@@ -310,18 +204,11 @@ void Menu::balanceFlow() {
 
         switch (ip) {
             case ('1'):
-                //cout << "Please insert the origin airport code: " << endl;
-                //cin >> ap;
-
-                //if (data_.getAirports().find(ap) == data_.getAirports().end()){
-                //    cout << "\nNot a valid airport...\nTry again!\n\n";
-                //    balanceFlow();
-                //}
-
 
                 data_.getAverageDifference();
                 data_.BalanceFlow();
                 data_.getAverageDifference();
+
                 back();
                 return balanceFlow();
             case ('b'):
@@ -338,19 +225,18 @@ void Menu::balanceFlow() {
 
 
 
-void Menu::otherInfo() {
+void Menu::networkFailures() {
     char option;
-    int k;
     cout << endl << endl;
-    cout << "┌────────────────────────────────────────────────┐" << endl
-         << "│                   Other Info                   │" << endl
-         << "├────────────────────────────────────────────────┤" << endl
-         << "│  1 - Airport with top-K number of flights      │" << endl
-         << "│  2 - Articulation Points                       │" << endl
-         << "│  3 - Maximum Trip                              │" << endl
-         << "│  b - Go Back                                   │" << endl
-         << "│  e - Exit                                      │" << endl
-         << "└────────────────────────────────────────────────┘" << endl
+    cout << "┌────────────────────────────────────┐" << endl
+         << "│        Failures on Network         │" << endl
+         << "├────────────────────────────────────┤" << endl
+         << "│  1 - Reservoirs Out of Comission   │" << endl
+         << "│  2 - Pumping Stations Removed      │" << endl
+         << "│  3 - Pipeline Rupture              │" << endl
+         << "│  b - Go Back                       │" << endl
+         << "│  e - Exit                          │" << endl
+         << "└────────────────────────────────────┘" << endl
          << endl
          << "What would you like to do next? ";
 
@@ -360,22 +246,63 @@ void Menu::otherInfo() {
         cin >> option;
 
         switch(option) {
-            case ('1') : {
-                cout << "Top-K airport with most flights? ";
-                cin >> k;
-                //data_.maxKAirport(k);
+            case ('1'):
+                removedReservoir();
                 back();
-                return otherInfo();
-            }
+                return networkFailures();
             case ('2'):
-                //data_.essentialAirports();
+                removedStation();
                 back();
-                return otherInfo();
+                return networkFailures();
+            case ('3'):
+                removedPipe();
+                back();
+                return networkFailures();
+            case ('b'):
+                return;
+            case ('e'):
+                return exitProgram();
 
-            case('3'):
-                //data_.MaximumTrip();
+            default:
+                cout << endl << "Not a valid option!" << endl;
+        }
+    }
+}
+
+void Menu::removedReservoir() {
+    char option;
+    vector<string> a;
+
+    cout << endl << endl;
+    cout << "┌────────────────────────────────────┐" << endl
+         << "│     Reservoirs Out of Comission    │" << endl
+         << "├────────────────────────────────────┤" << endl
+         << "│  1 - See Affected Cities           │" << endl
+         << "│  b - Go Back                       │" << endl
+         << "│  e - Exit                          │" << endl
+         << "└────────────────────────────────────┘" << endl
+         << endl
+         << "What would you like to do next? ";
+
+
+    while(true) {
+        cout << "Choose an option: ";
+        cin >> option;
+
+        switch(option) {
+            case ('1'):
+                a = createVecR();
+
+                if(a.empty()){
+                    cout << "No values selected." << endl;
+                    return;
+                }
+
+                data_.reservoirOutOfCommission(a);
+
                 back();
-                return otherInfo();
+                return removedReservoir();
+
             case ('b'):
                 return;
             case ('e'):
@@ -388,27 +315,200 @@ void Menu::otherInfo() {
 }
 
 
-/*
-vector<string> Menu::createVec() {
+
+
+void Menu::removedStation() {
+    char option;
+    vector<string> sC;
+
+    cout << endl << endl;
+    cout << "┌────────────────────────────────────┐" << endl
+         << "│      Pumping Stations Removed      │" << endl
+         << "├────────────────────────────────────┤" << endl
+         << "│  1 - See Affected Cities           │" << endl
+         << "│  b - Go Back                       │" << endl
+         << "│  e - Exit                          │" << endl
+         << "└────────────────────────────────────┘" << endl
+         << endl
+         << "What would you like to do next? ";
+
+
+    while(true) {
+        cout << "Choose an option: ";
+        cin >> option;
+
+        switch(option) {
+            case ('1'):
+
+                sC = createVecS();
+
+                if(sC.empty()){
+                    cout << "No values selected." << endl;
+                    return;
+                }
+
+
+                data_.stationRemoved(sC);
+
+                back();
+                return removedStation();
+
+            case ('b'):
+                return;
+            case ('e'):
+                return exitProgram();
+
+            default:
+                cout << endl << "Not a valid option!" << endl;
+        }
+    }
+}
+
+
+
+
+void Menu::removedPipe() {
+    char option;
+
+    vector<pair<string, string>> pC;
+
+    cout << endl << endl;
+    cout << "┌────────────────────────────────────┐" << endl
+         << "│          Pipeline Rupture          │" << endl
+         << "├────────────────────────────────────┤" << endl
+         << "│  1 - See Affected Cities           │" << endl
+         << "│  b - Go Back                       │" << endl
+         << "│  e - Exit                          │" << endl
+         << "└────────────────────────────────────┘" << endl
+         << endl
+         << "What would you like to do next? ";
+
+
+    while(true) {
+        cout << "Choose an option: ";
+        cin >> option;
+
+        switch(option) {
+            case ('1'):
+
+                pC = createVecPipe();
+
+                if(pC.empty()){
+                    cout << "No valid values selected." << endl;
+                    return;
+                }
+
+                data_.pipelineRemoved(pC);
+
+                back();
+                return removedPipe();
+
+            case ('b'):
+                return;
+            case ('e'):
+                return exitProgram();
+
+            default:
+                cout << endl << "Not a valid option!" << endl;
+        }
+    }
+}
+
+
+
+
+vector<string> Menu::createVecR() {
     bool flag = true;
     vector<string> v = {};
-    cout << "Type airlines to filter and hit Enter and 'd' when done.\n\n";
+
+    cout << "Type Reservoir Codes/Names to remove and hit Enter and 'd' when done.\n\n";
+
+    while(flag){
+        string inp = "";
+        cin >> inp;
+
+        if ( inp == "d") flag = false;
+        else{
+            auto it = data_.getReservoirs().find(inp);
+
+            if (it != data_.getReservoirs().end()){
+                v.push_back(inp);
+
+            }
+
+            else {
+                cout << "Not a valid Reservoir."<< endl;
+            }
+        }
+    }
+
+    if(!v.empty()) cout << "List done." << endl << endl;
+
+    return v;
+}
+
+
+
+vector<string> Menu::createVecS() {
+    bool flag = true;
+    vector<string> v = {};
+
+    cout << "Type Station Codes to remove and hit Enter and 'd' when done.\n\n";
 
     while(flag){
         string inp = "";
         cin >> inp;
         if ( inp == "d") flag = false;
         else{
-            if (data_.getAirlines().find(inp) != data_.getAirlines().end())
+            auto it = data_.getStations().find(inp);
+
+            if (it != data_.getStations().end())
                 v.push_back(inp);
-            else cout << "Not a valid airline."<< endl;
+
+            else cout << "Not a valid Station."<< endl;
         }
     }
-    cout << "Filters applied." << endl;
+
+    if(!v.empty()) cout << "List done." << endl << endl;
+
     return v;
 }
 
-*/
+
+
+vector<pair<string, string>> Menu::createVecPipe() {
+    bool flag = true;
+    vector<pair<string, string>> v = {};
+    cout << "Type Origin code and Destiny Code to remove and hit Enter and 'd' when done.\n\n";
+    cout << "Insert a pair (One Code per line): " << endl;
+
+    while(flag){
+        string pipe1 = "";
+        string pipe2 = "";
+
+        cin >> pipe1;
+
+        if ( pipe1 == "d") break;
+        cin >> pipe2;
+        if (pipe2 == "d") break;
+
+        if((pipe1 != "d") && (pipe2 != "d")){
+
+            if((data_.getGraph().findVertex(pipe1) != nullptr) && (data_.getGraph().findVertex(pipe2) != nullptr)){
+                v.push_back({pipe1, pipe2});
+                cout << "Insert another pair (One Code per line) or type 'd' if done:" << endl;
+            }
+
+            else cout << "Invalid values."<< endl;
+        }
+    }
+
+    if(!v.empty()) cout << "List done." << endl << endl;
+
+    return v;
+}
+
+
 
 
 void Menu::back() const {

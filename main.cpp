@@ -22,8 +22,8 @@ int main(){
     //data.readCitiesL();
     //data.readPipesL();
 
-    //Menu menu = Menu(data);
-    //menu.MainMenu();
+    Menu menu = Menu(data);
+    menu.MainMenu();
 
      /*
     for ( auto x : data.getReservoirs()){
@@ -65,7 +65,7 @@ int main(){
         }
     }*/
 
-    data.maxFLowTotalCity(0,"");
+    //data.maxFLowTotalCity(0,"");
     //data.maxFlowEdmonds();
     //data.getAverageDifference();
    //data.getDeficit();
@@ -89,15 +89,15 @@ int main(){
     }
     data.getAverageDifference();
     //data.getDeficit();*/
-    vector <string> a;
+    //vector <string> a;
     //a.push_back({"PS_9","PS_10"});
     //a.push_back({"PS_4","PS_5"});
     //data.pipelineRemoved(a);
-    a.push_back({"PS_2"});
-    a.push_back({"PS_1"});
-    data.stationRemoved(a);
+    //a.push_back({"PS_2"});
+    //a.push_back({"PS_1"});
+    //data.stationRemoved(a);
     //data.stationRemoved("PS_1");
-    data.maxFLowTotalCity(0,"");
+    //data.maxFLowTotalCity(0,"");
 
 
     return 0;

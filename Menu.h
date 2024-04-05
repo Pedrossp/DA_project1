@@ -17,11 +17,20 @@ public:
     void maxWater();
     void deficitPerCity();
     void balanceFlow();
+    void networkFailures();
+    void removedReservoir();
+    void removedStation();
+    void removedPipe();
 
-    void otherInfo();
+    vector<string> createVecR();
+    vector<string> createVecS();
+    vector<pair<string, string>> createVecPipe();
 
     void back() const;
     void exitProgram() const;
+
+
+
 };
 
 
