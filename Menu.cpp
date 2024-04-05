@@ -30,10 +30,16 @@ void Menu::MainMenu() {
                 maxWater();
                 return MainMenu();
             case ('2'):
-                deficitPerCity();
+                data_.getDeficit();;
                 return MainMenu();
             case ('3'):
-                balanceFlow();
+                cout << endl << "Values before: " << endl;
+                data_.maxFlowEdmonds();
+                data_.getAverageDifference();
+                cout << endl << "Balancing flow..." << endl;
+                data_.BalanceFlow();
+                cout << endl << "Values after: " << endl;
+                data_.getAverageDifference();
                 return MainMenu();
             case ('4'):
                 networkFailures();
@@ -64,7 +70,6 @@ void Menu::maxWater() {
 
     int flag = 1;
     string inputOrigin;
-    int inputRadiusO = 0;
 
     while (flag) {
         cout << "Choose an option: ";
@@ -73,7 +78,6 @@ void Menu::maxWater() {
         switch (inputTypeO) {
             case ('1'):
                 data_.maxFLowTotalCity(0, "");
-
                 flag = 0;
                 break;
 
@@ -98,131 +102,6 @@ void Menu::maxWater() {
         }
     }
 }
-
-
-
-
-void Menu::deficitPerCity() {
-    char option1;
-    cout << endl << endl;
-    cout << "┌────────────────────────────────────┐" << endl
-         << "│          Deficit per City          │" << endl
-         << "├────────────────────────────────────┤" << endl
-         << "│  1 - From all cities               │" << endl
-         << "│  b - Go Back                       │" << endl
-         << "│  e - Exit                          │" << endl
-         << "└────────────────────────────────────┘" << endl
-         << endl
-         << "What would you like to do next? ";
-
-    while(true) {
-        cout << "Choose an option: ";
-        cin >> option1;
-
-        switch(option1) {
-            case ('1'):
-                data_.getDeficit();
-                return deficitPerCity();
-            case ('b'):
-                return MainMenu();
-            case ('e'):
-                return exitProgram();
-
-            default:
-                cout << endl << "Not a valid option!" << endl;
-        }
-    }
-}
-
-/*
-void Menu::globalStatistics() {
-    char option;
-    cout << endl << endl;
-    cout << "┌────────────────────────────────────┐" << endl
-         << "│          Global Statistics         │" << endl
-         << "├────────────────────────────────────┤" << endl
-         << "│  1 - Total Airports                │" << endl
-         << "│  2 - Total Airlines                │" << endl
-         << "│  3 - Total Flights                 │" << endl
-         << "│  b - Go Back                       │" << endl
-         << "│  e - Exit                          │" << endl
-         << "└────────────────────────────────────┘" << endl
-         << endl
-         << "What would you like to do next? ";
-
-
-    while(true) {
-        cout << "Choose an option: ";
-        cin >> option;
-
-        switch(option) {
-            case ('1'):
-                cout << "Number of airports: " << data_.nrAirports() << endl;
-                back();
-                return getStatistics();
-            case ('2'):
-                cout << "Number of airlines: " << data_.nrAirlines() << endl;
-                back();
-                return getStatistics();
-            case ('3'):
-                cout << "Number of flights: " << data_.nrFlights() << endl;
-                back();
-                return getStatistics();
-            case ('b'):
-                return;
-            case ('e'):
-                return exitProgram();
-
-            default:
-                cout << endl << "Not a valid option!" << endl;
-        }
-    }
-}
-
-
-
-*/
-
-
-void Menu::balanceFlow() {
-    char ip;
-    //string ap;
-
-    cout << "┌─────────────────────────────────────────────────────────────────┐" << endl
-         << "│                          Balance Flow                           │" << endl
-         << "├─────────────────────────────────────────────────────────────────┤" << endl
-         << "│  1 - Balance Flow of Water across Network                       │" << endl
-         << "│  b - Go Back                                                    │" << endl
-         << "│  e - Exit                                                       │" << endl
-         << "└─────────────────────────────────────────────────────────────────┘" << endl
-         << endl
-         << "What would you like to do next? ";
-
-    while(true) {
-        cout << "Choose an option: ";
-        cin >> ip;
-
-        switch (ip) {
-            case ('1'):
-
-                data_.getAverageDifference();
-                data_.BalanceFlow();
-                data_.getAverageDifference();
-
-                back();
-                return balanceFlow();
-            case ('b'):
-                return;
-
-            case ('e'):
-                return exitProgram();
-
-            default:
-                cout << endl << "Not a valid option!" << endl;
-        }
-    }
-}
-
 
 
 void Menu::networkFailures() {
@@ -424,20 +303,23 @@ vector<string> Menu::createVecR() {
     cout << "Type Reservoir Codes/Names to remove and hit Enter and 'd' when done.\n\n";
 
     while(flag){
-        string inp = "";
-        cin >> inp;
+        string inp;
+        string x;
 
-        if ( inp == "d") flag = false;
-        else{
-            auto it = data_.getReservoirs().find(inp);
+        getline(cin, inp);
 
-            if (it != data_.getReservoirs().end()){
-                v.push_back(inp);
+        x = data_.verifyReservoirCode(inp);
 
-            }
+        if (x == "d") flag = false;
+        else {
+            auto it = data_.getReservoirs().find(x);
 
-            else {
-                cout << "Not a valid Reservoir."<< endl;
+            if (it != data_.getReservoirs().end()) {
+                v.push_back(x);
+            } else {
+                if(inp != ""){
+                    cout << "Not a valid Reservoir." << endl;
+                }
             }
         }
     }
@@ -533,5 +415,6 @@ void Menu::back() const {
 
 void Menu::exitProgram() const {
     cout << endl << "Exiting program..." << endl;
+    this_thread::sleep_for(chrono::seconds(2));
     exit(0);
 }
