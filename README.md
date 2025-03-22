@@ -1,6 +1,7 @@
-# DA_project1
+# DA_project1 - An Analysis Tool for Water Supply Management
 
-An Analysis Tool for Water Supply Management  (Grade - 18.65)
+#### Project developed in the DA course classes (Y2S2) at the Faculty of Engineering of the University of Porto (FEUP) 
+#### Grade - 18.65
 
 
 Members:
